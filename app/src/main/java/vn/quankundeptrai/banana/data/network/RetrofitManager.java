@@ -4,6 +4,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.google.gson.GsonBuilder;
+import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 
 import java.util.concurrent.TimeUnit;
 
@@ -73,6 +74,7 @@ public class RetrofitManager {
                         .setDateFormat(FormatConstants.SERVER_FORMAT)
                         .setLenient()
                         .excludeFieldsWithoutExposeAnnotation().create()))
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
 
         return retrofit.create(ApiInterfaces.class);

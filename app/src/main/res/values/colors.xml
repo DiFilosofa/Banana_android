@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#5e5cb6</color>
     <color name="colorPrimaryLight">#A19FEE</color>
     <color name="colorAccent">#545454</color>
+    <color name="loadingBlur">#3bffffff</color>
     <color name="menuHeaderColor">#cfcfcf</color>
     <color name="textBlack">#3A3A3A</color>
     <color name="hintTextGray">#999999</color>

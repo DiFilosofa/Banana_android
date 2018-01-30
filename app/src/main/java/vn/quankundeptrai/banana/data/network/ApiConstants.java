@@ -5,12 +5,12 @@ package vn.quankundeptrai.banana.data.network;
  */
 
 public class ApiConstants {
-    public static String BASE_URL = "https://bananaserver.herokuapp.com/";
+    public static final String BASE_URL = "https://bananaserver.herokuapp.com/";
 
-    public static String LOGIN = "user/login";
+    public static final String LOGIN = BASE_URL + "user/login";
 
-    public static String SIGN_UP = "user";
+    public static final String SIGN_UP = "user";
 
-    public static String GET_EVENTS = "";
-    public static String GET_EVENT_DETAIL = "";
+    public static final String GET_EVENTS = "";
+    public static final String GET_EVENT_DETAIL = "";
 }
