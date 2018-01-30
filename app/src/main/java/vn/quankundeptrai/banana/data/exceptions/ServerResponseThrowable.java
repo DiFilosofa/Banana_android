@@ -10,11 +10,11 @@ import vn.quankundeptrai.banana.data.models.responses.BaseResponse;
 public class ServerResponseThrowable extends Throwable {
     private BaseResponse errorResponse;
 
-    public ServerResponseThrowable(BaseResponse errorResponse){
+    public ServerResponseThrowable(BaseResponse errorResponse) {
         this.errorResponse = errorResponse;
     }
 
-    public String getErrorMessage(){
+    public String getErrorMessage() {
         return errorResponse.getMessage();
     }
 

@@ -9,7 +9,7 @@ import vn.quankundeptrai.banana.interfaces.IForegroundListener;
  * Created by TQN on 1/19/2018.
  */
 
-public class Application extends MultiDexApplication implements IForegroundListener{
+public class Application extends MultiDexApplication implements IForegroundListener {
     @Override
     public void onCreate() {
         super.onCreate();

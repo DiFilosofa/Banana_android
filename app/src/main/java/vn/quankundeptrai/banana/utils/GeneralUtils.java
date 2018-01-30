@@ -24,7 +24,7 @@ public class GeneralUtils {
         }
     }
 
-    public static int getColorFromResource(Context context, int resId){
+    public static int getColorFromResource(Context context, int resId) {
         return ContextCompat.getColor(context, resId);
     }
 }

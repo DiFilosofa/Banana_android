@@ -33,34 +33,34 @@ public class MenuManager implements DrawerLayout.DrawerListener, IAdapterDataCal
         initMenu();
     }
 
-    private void initMenu(){
-        menuRecycler = (RecyclerView)mainView.findViewById(R.id.menuItemsRecycler);
+    private void initMenu() {
+        menuRecycler = (RecyclerView) mainView.findViewById(R.id.menuItemsRecycler);
         menuRecycler.setLayoutManager(new LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false));
         menuRecycler.setAdapter(adapter);
 
-        (menu = (DrawerLayout)mainView.findViewById(R.id.drawer)).addDrawerListener(this);
+        (menu = (DrawerLayout) mainView.findViewById(R.id.drawer)).addDrawerListener(this);
     }
 
-    public void selectTab(int position){
+    public void selectTab(int position) {
         closeMenu();
-        if(currentPosition != position){
+        if (currentPosition != position) {
             currentPosition = position;
             callback.onItemClick(position);
         }
     }
 
-    public void closeMenu(){
+    public void closeMenu() {
         menu.closeDrawer(Gravity.START);
     }
 
-    public void openMenu(){
+    public void openMenu() {
         menu.openDrawer(Gravity.START);
     }
 
     @Override
     public void onDrawerSlide(View drawerView, float slideOffset) {
-        ((LinearLayout)mainView.findViewById(R.id.navigation)).setX(drawerView.getWidth()*(1-slideOffset));
-        mainView.findViewById(R.id.mainLayoutContent).setX(drawerView.getWidth()*slideOffset);
+        ((LinearLayout) mainView.findViewById(R.id.navigation)).setX(drawerView.getWidth() * (1 - slideOffset));
+        mainView.findViewById(R.id.mainLayoutContent).setX(drawerView.getWidth() * slideOffset);
     }
 
     @Override
