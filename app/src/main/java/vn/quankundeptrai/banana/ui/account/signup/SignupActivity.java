@@ -1,5 +1,6 @@
 package vn.quankundeptrai.banana.ui.account.signup;
 
+import vn.quankundeptrai.banana.R;
 import vn.quankundeptrai.banana.ui.base.BaseActivity;
 
 /**
@@ -9,7 +10,7 @@ import vn.quankundeptrai.banana.ui.base.BaseActivity;
 public class SignupActivity extends BaseActivity<SignupPresenter> implements SignupMvpView {
     @Override
     protected int getLayoutResource() {
-        return 0;
+        return R.layout.activity_register;
     }
 
     @Override
@@ -19,7 +20,7 @@ public class SignupActivity extends BaseActivity<SignupPresenter> implements Sig
 
     @Override
     protected SignupPresenter onCreatePresenter() {
-        return null;
+        return new SignupPresenter();
     }
 
     @Override
