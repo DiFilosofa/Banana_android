@@ -15,7 +15,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
 
     @Override
     protected String getScreenTitle() {
-        return "Log In";
+        return null;
     }
 
     @Override
