@@ -25,7 +25,9 @@ public class BasePresenter <T extends BaseMvpView> implements Presenter<T> {
     @Override
     public void attachView(T mvpView) {
         mMvpView = mvpView;
-
+        if (compositeDisposable == null) {
+            compositeDisposable = new CompositeDisposable();
+        }
         if (mvpView instanceof BaseActivity) {
             mContext = (BaseActivity) mvpView;
         } else if (mvpView instanceof BaseFragment) {
