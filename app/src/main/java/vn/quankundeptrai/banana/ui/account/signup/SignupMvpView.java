@@ -1,5 +1,6 @@
 package vn.quankundeptrai.banana.ui.account.signup;
 
+import vn.quankundeptrai.banana.enums.RxStatus;
 import vn.quankundeptrai.banana.ui.base.BaseMvpView;
 
 /**
@@ -7,4 +8,5 @@ import vn.quankundeptrai.banana.ui.base.BaseMvpView;
  */
 
 public interface SignupMvpView extends BaseMvpView {
+    void onRegisterAttempt(RxStatus result);
 }

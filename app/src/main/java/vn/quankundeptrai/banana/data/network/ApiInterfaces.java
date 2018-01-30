@@ -4,6 +4,7 @@ import io.reactivex.Observable;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
 import vn.quankundeptrai.banana.data.models.requests.LogInRequest;
+import vn.quankundeptrai.banana.data.models.requests.SignupRequest;
 import vn.quankundeptrai.banana.data.models.responses.BaseResponse;
 import vn.quankundeptrai.banana.data.models.responses.LoginResponse;
 
@@ -14,4 +15,7 @@ import vn.quankundeptrai.banana.data.models.responses.LoginResponse;
 public interface ApiInterfaces {
     @POST(ApiConstants.LOGIN)
     Observable<BaseResponse<LoginResponse>> login(@Body LogInRequest logInRequest);
+
+    @POST(ApiConstants.SIGN_UP)
+    Observable<BaseResponse<Object>> register(@Body SignupRequest signupRequest);
 }

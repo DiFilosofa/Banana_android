@@ -9,8 +9,8 @@ public class ApiConstants {
 
     public static final String LOGIN = BASE_URL + "user/login";
 
-    public static final String SIGN_UP = "user";
+    public static final String SIGN_UP = BASE_URL + "user";
 
-    public static final String GET_EVENTS = "";
-    public static final String GET_EVENT_DETAIL = "";
+    public static final String GET_EVENTS = BASE_URL + "";
+    public static final String GET_EVENT_DETAIL = BASE_URL + "";
 }
