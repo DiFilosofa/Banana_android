@@ -22,3 +22,5 @@ local\.properties
 gradlew
 
 gradle\.properties
+
+build/android-profile/
