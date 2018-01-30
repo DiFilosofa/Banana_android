@@ -54,8 +54,8 @@ public class LoadingView extends RelativeLayout {
             @Override
             public void run() {
                 if (getChildCount() > 0) {
-//                    mainView = getChildAt(0);
-//                    mainView.setVisibility(GONE);
+                    mainView = getChildAt(0);
+                    mainView.setVisibility(GONE);
                     loading = (RelativeLayout) LayoutInflater.from(context).inflate(R.layout.layout_loading, null);
                     loading.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
                     View bar = loading.findViewById(R.id.bar);
@@ -96,14 +96,14 @@ public class LoadingView extends RelativeLayout {
     }
 
     private void loadDone() {
-//        mainView.setVisibility(VISIBLE);
+        mainView.setVisibility(VISIBLE);
         loading.setVisibility(GONE);
         showError = false;
     }
 
     public void reset() {
         if (mainView != null && loading != null) {
-//            mainView.setVisibility(GONE);
+            mainView.setVisibility(GONE);
             loading.setVisibility(VISIBLE);
             removeError();
         }

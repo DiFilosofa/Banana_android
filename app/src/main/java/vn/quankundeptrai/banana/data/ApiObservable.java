@@ -11,6 +11,7 @@ import io.reactivex.functions.Function;
 import vn.quankundeptrai.banana.data.exceptions.ServerResponseThrowable;
 import vn.quankundeptrai.banana.data.models.other.User;
 import vn.quankundeptrai.banana.data.models.requests.LogInRequest;
+import vn.quankundeptrai.banana.data.models.requests.SignupRequest;
 import vn.quankundeptrai.banana.data.models.responses.BaseResponse;
 import vn.quankundeptrai.banana.data.models.responses.LoginResponse;
 import vn.quankundeptrai.banana.data.network.ApiInterfaces;
@@ -51,8 +52,21 @@ public class ApiObservable {
                 .flatMap(new Function<BaseResponse<LoginResponse>, Observable<RxStatus>>() {
                     @Override
                     public Observable<RxStatus> apply(BaseResponse<LoginResponse> response) throws Exception {
-                        if(response.isSuccess()){
+                        if (response.isSuccess()) {
                             return saveUserToLocal(response.getData(), email, password);
+                        }
+                        return error(new ServerResponseThrowable(response));
+                    }
+                });
+    }
+
+    public static Observable<RxStatus> signUpAndLogin(final String email, final String password, final String confirmPassword, final String nickname, final String address, final String phone) {
+        return getInterface().register(new SignupRequest(email, password, confirmPassword, nickname, phone, address))
+                .flatMap(new Function<BaseResponse<Object>, Observable<RxStatus>>() {
+                    @Override
+                    public Observable<RxStatus> apply(BaseResponse<Object> response) throws Exception {
+                        if (response.isSuccess()) {
+                            return login(email, password);
                         }
                         return error(new ServerResponseThrowable(response));
                     }

@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by TQN on 1/30/18.
  */
 
-public class LoginResponse{
+public class LoginResponse {
     @SerializedName("token")
     @Expose
     private String token;

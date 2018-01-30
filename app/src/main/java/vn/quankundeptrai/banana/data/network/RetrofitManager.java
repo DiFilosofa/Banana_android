@@ -164,13 +164,16 @@ public class RetrofitManager {
 //                    activity.finish();
                     ///Go back to start screen
                 } else {
+                    activity.hideLoading();
                     Toast.makeText(activity, serverResponseThrowable.getErrorMessage(), Toast.LENGTH_SHORT).show();
                 }
             } else {
                 Log.e("Error", Log.getStackTraceString(throwable));
+                activity.hideLoading();
                 Toast.makeText(activity, activity.getResources().getString(R.string.error), Toast.LENGTH_SHORT).show();
             }
         } else {
+            activity.hideLoading();
             Toast.makeText(activity, activity.getResources().getString(R.string.error), Toast.LENGTH_SHORT).show();
         }
     }

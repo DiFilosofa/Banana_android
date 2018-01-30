@@ -14,7 +14,7 @@ import vn.quankundeptrai.banana.ui.menufragments.map.MapFragment;
  */
 
 public class InstantiateUtils {
-    public static List<MenuItemModel> generateMenuItems(){
+    public static List<MenuItemModel> generateMenuItems() {
         List<MenuItemModel> menuItems = new ArrayList<MenuItemModel>();
         menuItems.add(new MenuItemModel(R.drawable.ic_menu, "example"));
         //Add more Items here
@@ -22,7 +22,7 @@ public class InstantiateUtils {
         return menuItems;
     }
 
-    public static ArrayList<Fragment> generateMenuFragments(){
+    public static ArrayList<Fragment> generateMenuFragments() {
         ArrayList<Fragment> fragmentList = new ArrayList<Fragment>();
         fragmentList.add(new MapFragment());
         //Add more fragments here

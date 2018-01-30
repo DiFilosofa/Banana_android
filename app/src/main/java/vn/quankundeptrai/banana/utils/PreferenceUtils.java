@@ -11,6 +11,7 @@ import vn.quankundeptrai.banana.data.CoreManager;
 
 public class PreferenceUtils {
     private static final String prefName = "sgstrawberry"; //Change to your app name later
+
     /**
      * Save specific string to SharedPreferences
      *

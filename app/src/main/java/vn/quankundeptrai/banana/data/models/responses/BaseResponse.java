@@ -32,11 +32,11 @@ public class BaseResponse<T> {
         return data;
     }
 
-    public String getMessage(){
+    public String getMessage() {
         return message;
     }
 
-    public int getCode(){
+    public int getCode() {
         return code;
     }
 }
