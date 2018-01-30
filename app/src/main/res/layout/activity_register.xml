@@ -4,124 +4,130 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorPrimaryLight"
-        android:orientation="vertical">
-
-        <ImageView
-            android:id="@+id/exitBtn"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:padding="10dp"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_exit" />
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp">
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimaryLight"
+            android:orientation="vertical">
 
-            <TextView
-                style="@style/LoginTextView"
-                android:gravity="center"
-                android:text="@string/registerHeader" />
-
-            <TextView
-                style="@style/LoginTextView"
+            <ImageView
+                android:id="@+id/exitBtn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:text="@string/registerEmail"
+                android:padding="10dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_exit" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    style="@style/LoginTextView"
+                    android:gravity="center"
+                    android:text="@string/registerHeader" />
+
+                <TextView
+                    style="@style/LoginTextView"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/registerEmail"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/emailInput"
+                    style="@style/NormalEditText"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1" />
+
+                <TextView
+                    style="@style/LoginTextView"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/registerPassword"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/passwordInput"
+                    style="@style/NormalEditText"
+                    android:inputType="textPassword"
+                    android:maxLines="1" />
+
+                <TextView
+                    style="@style/LoginTextView"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/registerConfirmPassword"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/passwordConfirmInput"
+                    style="@style/NormalEditText"
+                    android:inputType="textPassword"
+                    android:maxLines="1" />
+
+                <TextView
+                    style="@style/LoginTextView"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/registerNickname"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/nicknameInput"
+                    style="@style/NormalEditText"
+                    android:inputType="text"
+                    android:maxLines="1" />
+
+                <TextView
+                    style="@style/LoginTextView"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/registerAddress"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/addressInput"
+                    style="@style/NormalEditText"
+                    android:inputType="text"
+                    android:maxLines="1" />
+
+                <TextView
+                    style="@style/LoginTextView"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/registerPhone"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/phoneInput"
+                    style="@style/NormalEditText"
+                    android:inputType="phone"
+                    android:maxLines="1" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/registerBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:text="@string/register"
+                android:textColor="@android:color/white"
+                android:textSize="22sp"
                 android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/emailInput"
-                style="@style/NormalEditText"
-                android:inputType="textEmailAddress"
-                android:maxLines="1" />
-
-            <TextView
-                style="@style/LoginTextView"
-                android:layout_marginTop="10dp"
-                android:text="@string/registerPassword"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/passwordInput"
-                style="@style/NormalEditText"
-                android:inputType="textPassword"
-                android:maxLines="1" />
-
-            <TextView
-                style="@style/LoginTextView"
-                android:layout_marginTop="10dp"
-                android:text="@string/registerConfirmPassword"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/passwordConfirmInput"
-                style="@style/NormalEditText"
-                android:inputType="textPassword"
-                android:maxLines="1" />
-
-            <TextView
-                style="@style/LoginTextView"
-                android:layout_marginTop="10dp"
-                android:text="@string/registerNickname"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/nicknameInput"
-                style="@style/NormalEditText"
-                android:inputType="text"
-                android:maxLines="1" />
-
-            <TextView
-                style="@style/LoginTextView"
-                android:layout_marginTop="10dp"
-                android:text="@string/registerAddress"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/addressInput"
-                style="@style/NormalEditText"
-                android:inputType="text"
-                android:maxLines="1" />
-
-            <TextView
-                style="@style/LoginTextView"
-                android:layout_marginTop="10dp"
-                android:text="@string/registerPhone"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/phoneInput"
-                style="@style/NormalEditText"
-                android:inputType="phone"
-                android:maxLines="1" />
+            <ImageView
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="right"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/splash_icon"
+                android:layout_marginBottom="20dp"/>
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/registerBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
-            android:text="@string/register"
-            android:textColor="@android:color/white"
-            android:textSize="22sp"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_gravity="right"
-            android:layout_marginRight="10dp"
-            android:src="@drawable/splash_icon" />
-    </LinearLayout>
+    </ScrollView>
 </vn.quankundeptrai.banana.customviews.general.LoadingView>

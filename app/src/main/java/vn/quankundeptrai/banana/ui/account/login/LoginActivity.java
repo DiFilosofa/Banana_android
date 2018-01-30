@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import vn.quankundeptrai.banana.BuildConfig;
 import vn.quankundeptrai.banana.R;
 import vn.quankundeptrai.banana.customviews.general.LoadingView;
 import vn.quankundeptrai.banana.data.CoreManager;
@@ -52,6 +53,11 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
             mainView.findViewById(R.id.loginBtn).setOnClickListener(this);
             mainView.findViewById(R.id.registerBtn).setOnClickListener(this);
             mainView.findViewById(R.id.forgotPasswordBtn).setOnClickListener(this);
+
+            if (BuildConfig.DEBUG) {
+                emailInput.setText("quandeptrai@quandeptrai.com");
+                passwordInput.setText("123456");
+            }
             loader.loadComplete();
         }
     }

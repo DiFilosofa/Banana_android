@@ -1,6 +1,7 @@
 package vn.quankundeptrai.banana.ui.account.signup;
 
 import android.content.Intent;
+import android.support.v4.app.ActivityCompat;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -74,15 +75,15 @@ public class SignupActivity extends BaseActivity<SignupPresenter> implements Sig
     }
 
     private boolean validate() {
-        if (ValidationUtils.isValidEmail(emailInput.getText().toString().trim())) {
+        if (!ValidationUtils.isValidEmail(emailInput.getText().toString().trim())) {
             Toast.makeText(this, getBaseContext().getString(R.string.invalidEmail), Toast.LENGTH_SHORT).show();
             return false;
         }
-        if (ValidationUtils.isMatch(passwordInput.getText().toString().trim(), confirmPasswordInput.getText().toString().trim())) {
+        if (!ValidationUtils.isMatch(passwordInput.getText().toString().trim(), confirmPasswordInput.getText().toString().trim())) {
             Toast.makeText(this, getBaseContext().getString(R.string.unmatchPasswords), Toast.LENGTH_SHORT).show();
             return false;
         }
-        if (ValidationUtils.isPasswordValid(passwordInput.getText().toString().trim())) {
+        if (!ValidationUtils.isPasswordValid(passwordInput.getText().toString().trim())) {
             Toast.makeText(this, getBaseContext().getString(R.string.password), Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -94,9 +95,8 @@ public class SignupActivity extends BaseActivity<SignupPresenter> implements Sig
         switch (result) {
             case Success:
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                ActivityCompat.finishAffinity(this);
                 startActivity(intent);
-                finish();
                 break;
 
             case Fail:
