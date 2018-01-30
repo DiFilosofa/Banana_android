@@ -20,7 +20,6 @@ import vn.quankundeptrai.banana.utils.ValidationUtils;
 
 public class SignupActivity extends BaseActivity<SignupPresenter> implements SignupMvpView, View.OnClickListener {
     private EditText emailInput, passwordInput, confirmPasswordInput, nicknameInput, addressInput, phoneInput;
-    private LoadingView loader;
 
     @Override
     protected int getLayoutResource() {
@@ -39,7 +38,6 @@ public class SignupActivity extends BaseActivity<SignupPresenter> implements Sig
 
     @Override
     protected void initialView() {
-        loader = mainView.findViewById(R.id.loader);
         emailInput = mainView.findViewById(R.id.emailInput);
         passwordInput = mainView.findViewById(R.id.passwordInput);
         confirmPasswordInput = mainView.findViewById(R.id.passwordConfirmInput);
@@ -48,7 +46,6 @@ public class SignupActivity extends BaseActivity<SignupPresenter> implements Sig
         phoneInput = mainView.findViewById(R.id.phoneInput);
         mainView.findViewById(R.id.exitBtn).setOnClickListener(this);
         mainView.findViewById(R.id.registerBtn).setOnClickListener(this);
-        loader.loadComplete();
     }
 
     @Override
@@ -60,7 +57,7 @@ public class SignupActivity extends BaseActivity<SignupPresenter> implements Sig
             case R.id.registerBtn:
                 if (validate()) {
                     KeyboardUtils.hideKeyboard(this);
-                    loader.reset();
+                    showLoading();
                     getPresenter().signup(
                             emailInput.getText().toString().trim(),
                             passwordInput.getText().toString().trim(),
@@ -92,6 +89,7 @@ public class SignupActivity extends BaseActivity<SignupPresenter> implements Sig
 
     @Override
     public void onRegisterAttempt(RxStatus result) {
+        hideLoading();
         switch (result) {
             case Success:
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -100,8 +98,10 @@ public class SignupActivity extends BaseActivity<SignupPresenter> implements Sig
                 break;
 
             case Fail:
-                loader.loadComplete();
                 Toast.makeText(this, getBaseContext().getString(R.string.error), Toast.LENGTH_SHORT).show();
+                break;
+
+            default:
                 break;
         }
     }

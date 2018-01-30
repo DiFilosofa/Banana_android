@@ -3,6 +3,7 @@
     <string name="error">Error</string>
     <string name="noNetwork">Internet is not available</string>
     <string name="session_timeout">Session Timeout</string>
+    <string name="loading">Loading...</string>
 
     <string name="email">Email</string>
     <string name="password">Password</string>

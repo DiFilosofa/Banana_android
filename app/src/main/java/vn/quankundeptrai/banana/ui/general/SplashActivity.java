@@ -38,8 +38,7 @@ public class SplashActivity extends BaseActivity {
 
         @Override
         public void onNext(Object o) {
-            Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
-            startActivity(intent);
+            startActivity(new Intent(SplashActivity.this, LoginActivity.class));
             finish();
         }
     };
@@ -66,7 +65,7 @@ public class SplashActivity extends BaseActivity {
 
     @Override
     protected void onResume() {
-        Observable.timer(AppConstants.SPLASH_DELAY, TimeUnit.SECONDS).subscribe(observer);
         super.onResume();
+        Observable.timer(AppConstants.SPLASH_DELAY, TimeUnit.SECONDS).subscribe(observer);
     }
 }

@@ -23,7 +23,6 @@ import vn.quankundeptrai.banana.utils.ValidationUtils;
 
 public class LoginActivity extends BaseActivity<LoginPresenter> implements LoginMvpView, View.OnClickListener {
     private EditText emailInput, passwordInput;
-    private LoadingView loader;
 
     @Override
     protected int getLayoutResource() {
@@ -42,8 +41,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
 
     @Override
     protected void initialView() {
-        loader = mainView.findViewById(R.id.loginLoader);
-        loader.reset();
+        showLoading();
         if (CoreManager.getInstance().isLogined(this)) {
             User user = CoreManager.getInstance().getUser();
             getPresenter().login(user.getEmail(), user.getPassword());
@@ -58,7 +56,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
                 emailInput.setText("quandeptrai@quandeptrai.com");
                 passwordInput.setText("123456");
             }
-            loader.loadComplete();
+            hideLoading();
         }
     }
 
@@ -67,7 +65,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
         switch (v.getId()) {
             case R.id.loginBtn:
                 KeyboardUtils.hideKeyboard(this);
-                loader.reset();
+                showLoading();
                 if (validate()) {
                     getPresenter().login(emailInput.getText().toString().trim(), passwordInput.getText().toString().trim());
                 }
@@ -96,6 +94,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
 
     @Override
     public void onLoginAttempt(RxStatus status) {
+        hideLoading();
         switch (status) {
             case Success:
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -103,10 +102,11 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
                 startActivity(intent);
                 finish();
                 break;
+
             case Fail:
-                loader.loadComplete();
                 Toast.makeText(this, getBaseContext().getString(R.string.error), Toast.LENGTH_SHORT).show();
                 break;
+
             default:
                 break;
         }
