@@ -23,4 +23,14 @@
     <string name="invalidEmail">Email is invalid.</string>
     <string name="invalidPassword">Password is invalid.</string>
     <string name="unmatchPasswords">Passwords don\'t match.</string>
+
+    <string-array name="menuTitle">
+        <item>Map</item>
+        <item>Notification</item>
+        <item>Favorite Locations</item>
+        <item>Facebook</item>
+        <item>Your Thoughts</item>
+        <item>Rewards</item>
+        <item>Help</item>
+    </string-array>
 </resources>

@@ -21,7 +21,6 @@ public class MapFragment extends BaseFragment<MapPresenter> implements MapMvpVie
 
     @Override
     protected void initialView() {
-        ((MainActivity)getCurrentActivity()).setTitle("Map");
 
     }
 }

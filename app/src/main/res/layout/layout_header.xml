@@ -23,4 +23,11 @@
         android:maxWidth="200dp"
         android:textColor="@android:color/white"
         android:textSize="@dimen/headerTextSize" />
+
+    <ImageView
+        android:id="@+id/headerShadow"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:src="@drawable/shadow"
+        android:layout_alignParentBottom="true"/>
 </RelativeLayout>

@@ -57,7 +57,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
                 }
             });
         } else {
-            hideHeader();
+            destroyHeader();
         }
 
         mainView = getLayoutInflater().inflate(getLayoutResource(), null);
@@ -86,9 +86,18 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         ((ImageView)mainView.findViewById(R.id.headerLeftBtn)).setImageResource(resourceId);
     }
 
-    private void hideHeader() {
+    public void destroyHeader(){
         ((ViewGroup) findViewById(R.id.root)).removeView(findViewById(R.id.header));
-        ((ViewGroup) findViewById(R.id.root)).removeView(findViewById(R.id.headerShadow));
+    }
+
+    public void hideHeader() {
+        findViewById(R.id.header).setVisibility(View.GONE);
+        findViewById(R.id.headerShadow).setVisibility(View.GONE);
+    }
+
+    public void showHeader(){
+        findViewById(R.id.header).setVisibility(View.VISIBLE);
+        findViewById(R.id.headerShadow).setVisibility(View.VISIBLE);
     }
 
     public T getPresenter() {
