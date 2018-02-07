@@ -1,18 +1,22 @@
-package vn.quankundeptrai.banana.ui.menufragments.feedback;
+package vn.quankundeptrai.banana.ui.menuactivities.help;
 
 import vn.quankundeptrai.banana.R;
+import vn.quankundeptrai.banana.ui.base.BaseActivity;
 import vn.quankundeptrai.banana.ui.base.BaseFragment;
-import vn.quankundeptrai.banana.ui.menufragments.help.HelpMvpView;
-import vn.quankundeptrai.banana.ui.menufragments.help.HelpPresenter;
 
 /**
  * Created by TQN on 1/31/18.
  */
 
-public class FeedbackFragment extends BaseFragment<HelpPresenter> implements HelpMvpView {
+public class HelpActivity extends BaseActivity<HelpPresenter> implements HelpMvpView{
     @Override
     protected int getLayoutResource() {
-        return R.layout.fragment_feedback;
+        return R.layout.activity_help;
+    }
+
+    @Override
+    protected String getScreenTitle() {
+        return getString(R.string.title_help);
     }
 
     @Override

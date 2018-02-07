@@ -1,7 +1,6 @@
-package vn.quankundeptrai.banana.ui.menufragments.map;
+package vn.quankundeptrai.banana.ui.main.map;
 
 import vn.quankundeptrai.banana.R;
-import vn.quankundeptrai.banana.ui.main.MainActivity;
 import vn.quankundeptrai.banana.ui.base.BaseFragment;
 
 /**
@@ -11,7 +10,7 @@ import vn.quankundeptrai.banana.ui.base.BaseFragment;
 public class MapFragment extends BaseFragment<MapPresenter> implements MapMvpView {
     @Override
     protected int getLayoutResource() {
-        return R.layout.fragment_map;
+        return R.layout.activity_map;
     }
 
     @Override

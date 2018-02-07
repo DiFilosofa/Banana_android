@@ -1,4 +1,4 @@
-package vn.quankundeptrai.banana.ui.menufragments.favoritelocations;
+package vn.quankundeptrai.banana.ui.menuactivities.favoritelocations;
 
 import vn.quankundeptrai.banana.ui.base.BasePresenter;
 

@@ -3,7 +3,7 @@
     <string name="error">Error</string>
     <string name="noNetwork">Internet is not available</string>
     <string name="session_timeout">Session Timeout</string>
-    <string name="loading">Loading...</string>
+    <string name="loading">Loading…</string>
 
     <string name="email">Email</string>
     <string name="password">Password</string>
@@ -24,13 +24,9 @@
     <string name="invalidPassword">Password is invalid.</string>
     <string name="unmatchPasswords">Passwords don\'t match.</string>
 
-    <string-array name="menuTitle">
-        <item>Map</item>
-        <item>Notification</item>
-        <item>Favorite Locations</item>
-        <item>Facebook</item>
-        <item>Your Thoughts</item>
-        <item>Rewards</item>
-        <item>Help</item>
-    </string-array>
+    <string name="title_notification">Notification</string>
+    <string name="title_fav_location">Favorite Locations</string>
+    <string name="title_feedback">Feedback</string>
+    <string name="title_rewards">Rewards</string>
+    <string name="title_help">Help</string>
 </resources>

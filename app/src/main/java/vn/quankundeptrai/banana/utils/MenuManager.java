@@ -20,7 +20,6 @@ public class MenuManager implements DrawerLayout.DrawerListener, IAdapterDataCal
     private IAdapterDataCallback callback;
     private MainActivity activity;
     private MenuAdapter adapter;
-    private RecyclerView menuRecycler;
     private DrawerLayout menu;
     private View mainView;
     private int currentPosition = 0;
@@ -34,11 +33,11 @@ public class MenuManager implements DrawerLayout.DrawerListener, IAdapterDataCal
     }
 
     private void initMenu() {
-        menuRecycler = (RecyclerView) mainView.findViewById(R.id.menuItemsRecycler);
+        RecyclerView menuRecycler = mainView.findViewById(R.id.menuItemsRecycler);
         menuRecycler.setLayoutManager(new LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false));
         menuRecycler.setAdapter(adapter);
 
-        (menu = (DrawerLayout) mainView.findViewById(R.id.drawer)).addDrawerListener(this);
+        (menu = mainView.findViewById(R.id.drawer)).addDrawerListener(this);
     }
 
     public void selectTab(int position) {
@@ -60,7 +59,7 @@ public class MenuManager implements DrawerLayout.DrawerListener, IAdapterDataCal
     @Override
     public void onDrawerSlide(View drawerView, float slideOffset) {
         ((LinearLayout) mainView.findViewById(R.id.navigation)).setX(drawerView.getWidth() * (1 - slideOffset));
-        mainView.findViewById(R.id.mainLayoutContent).setX(drawerView.getWidth() * slideOffset);
+
     }
 
     @Override
@@ -80,6 +79,6 @@ public class MenuManager implements DrawerLayout.DrawerListener, IAdapterDataCal
 
     @Override
     public void onItemClick(int position) {
-        selectTab(position);
+        callback.onItemClick(position);
     }
 }

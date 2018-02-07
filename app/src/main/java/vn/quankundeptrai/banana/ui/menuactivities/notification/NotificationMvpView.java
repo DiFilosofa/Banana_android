@@ -1,4 +1,4 @@
-package vn.quankundeptrai.banana.ui.menufragments.notification;
+package vn.quankundeptrai.banana.ui.menuactivities.notification;
 
 import vn.quankundeptrai.banana.ui.base.BaseMvpView;
 

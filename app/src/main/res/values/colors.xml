@@ -9,4 +9,5 @@
     <color name="textBlack">#3A3A3A</color>
     <color name="hintTextGray">#999999</color>
     <color name="menuItemClickedPurple">#32a19fee</color>
+    <color name="transparent_gray">#6d999999</color>
 </resources>

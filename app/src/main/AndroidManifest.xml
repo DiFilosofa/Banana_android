@@ -29,6 +29,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.menuactivities.favoritelocations.FavoriteLocationActivity" />
+        <activity android:name=".ui.menuactivities.help.HelpActivity" />
+        <activity android:name=".ui.menuactivities.feedback.FeedbackActivity" />
+        <activity android:name=".ui.menuactivities.notification.NotificationActivity" />
+        <activity android:name=".ui.menuactivities.rewards.RewardsActivity" />
     </application>
 
 </manifest>

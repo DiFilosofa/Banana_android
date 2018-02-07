@@ -1,16 +1,22 @@
-package vn.quankundeptrai.banana.ui.menufragments.rewards;
+package vn.quankundeptrai.banana.ui.menuactivities.rewards;
 
 import vn.quankundeptrai.banana.R;
+import vn.quankundeptrai.banana.ui.base.BaseActivity;
 import vn.quankundeptrai.banana.ui.base.BaseFragment;
 
 /**
  * Created by TQN on 1/31/18.
  */
 
-public class RewardsFragment extends BaseFragment<RewardsPresenter> implements RewardsMvpView{
+public class RewardsActivity extends BaseActivity<RewardsPresenter> implements RewardsMvpView{
     @Override
     protected int getLayoutResource() {
-        return R.layout.fragment_rewards;
+        return R.layout.activity_rewards;
+    }
+
+    @Override
+    protected String getScreenTitle() {
+        return getString(R.string.title_rewards);
     }
 
     @Override

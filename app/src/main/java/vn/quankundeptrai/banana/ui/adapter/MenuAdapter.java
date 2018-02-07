@@ -43,15 +43,9 @@ public class MenuAdapter extends BaseRecyclerAdapter<MenuItemModel, MenuAdapter.
     protected void handleItem(final MenuItemViewHolder holder, final int position, MenuItemModel item) {
         MenuItemModel menuItem = mainList.get(position);
 
-        if(position == AppConstants.MENU_MAP){
-            currentView = holder;
-            holder.wrapper.setBackgroundColor(ContextCompat.getColor(context, R.color.menuItemClickedPurple));
-            holder.name.setTextColor(ContextCompat.getColor(context, R.color.colorPrimary));
-        }
-        else {
             holder.wrapper.setBackgroundColor(Color.TRANSPARENT);
             holder.name.setTextColor(ContextCompat.getColor(context, R.color.textBlack));
-        }
+
 
         holder.icon.setImageResource(menuItem.getIconResId());
         holder.name.setText(menuItem.getItemName());
