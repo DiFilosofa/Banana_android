@@ -9,7 +9,6 @@ import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -25,14 +24,12 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import vn.quankundeptrai.banana.R;
-import vn.quankundeptrai.banana.customviews.general.NonSwipeViewPager;
 import vn.quankundeptrai.banana.data.CoreManager;
 import vn.quankundeptrai.banana.data.constants.AppConstants;
 import vn.quankundeptrai.banana.data.constants.ExtraKeys;
 import vn.quankundeptrai.banana.dialogs.DialogUtils;
 import vn.quankundeptrai.banana.interfaces.IAdapterDataCallback;
 import vn.quankundeptrai.banana.interfaces.IJobListener;
-import vn.quankundeptrai.banana.ui.adapter.PagerAdapter;
 import vn.quankundeptrai.banana.ui.base.BaseActivity;
 import vn.quankundeptrai.banana.ui.menuactivities.favoritelocations.FavoriteLocationActivity;
 import vn.quankundeptrai.banana.ui.menuactivities.feedback.FeedbackActivity;
@@ -40,7 +37,6 @@ import vn.quankundeptrai.banana.ui.menuactivities.help.HelpActivity;
 import vn.quankundeptrai.banana.ui.menuactivities.notification.NotificationActivity;
 import vn.quankundeptrai.banana.ui.menuactivities.rewards.RewardsActivity;
 import vn.quankundeptrai.banana.utils.GeneralUtils;
-import vn.quankundeptrai.banana.utils.InstantiateUtils;
 import vn.quankundeptrai.banana.utils.MenuManager;
 import vn.quankundeptrai.banana.utils.PermissionUtils;
 

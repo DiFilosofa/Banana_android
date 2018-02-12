@@ -10,11 +10,26 @@
         <item name="windowActionBar">false</item>
     </style>
 
-    <style name="LoginTextView">
+    <style name="NormalTextView">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/textBlack</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="LoginTextView" parent="NormalTextView">
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="FavoriteLocationsTextView_district" parent="NormalTextView">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="FavoriteLocationsTextView_detail" parent="NormalTextView">
+        <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
     <style name="NormalEditText" parent="Base.Widget.AppCompat.EditText">
@@ -43,5 +58,9 @@
         <item name="colorSwitchThumbNormal">@color/switch_off</item>
         <!-- inactive track color (30% transparency) -->
         <item name="android:colorForeground">@color/switch_track_off</item>
+    </style>
+
+    <style name="BananaCheckbox">
+        <item name="colorAccent">@color/checkBoxColorAccent</item>
     </style>
 </resources>

@@ -1,11 +1,13 @@
 package vn.quankundeptrai.banana.utils;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import vn.quankundeptrai.banana.R;
+import vn.quankundeptrai.banana.data.models.favoriteLocation.FavoriteLocationItemModel;
 import vn.quankundeptrai.banana.data.models.menu.MenuItemModel;
 import vn.quankundeptrai.banana.ui.menuactivities.favoritelocations.FavoriteLocationActivity;
 import vn.quankundeptrai.banana.ui.menuactivities.feedback.FeedbackActivity;
@@ -27,5 +29,14 @@ public class InstantiateUtils {
         menuItems.add(new MenuItemModel(R.drawable.ic_reward, "Rewards"));
         menuItems.add(new MenuItemModel(R.drawable.ic_help, "Help"));
         return menuItems;
+    }
+
+    public static List<FavoriteLocationItemModel> generateFavoriteLocations(Context context) {
+        List<FavoriteLocationItemModel> districts = new ArrayList<FavoriteLocationItemModel>();
+        String[] districtArray = context.getResources().getStringArray(R.array.districts);
+        for (String dist : districtArray) {
+            districts.add(new FavoriteLocationItemModel(dist, ""));
+        }
+        return districts;
     }
 }

@@ -38,4 +38,32 @@
     <string name="no_location_permission">Chúng tôi không thể lấy vị trí của bạn nếu không được cho phép!</string>
 
     <string name="please_enable_gps_and_choose_high_accuracy_method_so_strawberry_can_estimate_your_location">Vui lòng mở GPS và chọn độ chính xác cao để ứng dụng có thể xác định vị trí của bạn</string>
+
+    <string-array name="districts">
+        <item>Tất cả</item>
+        <item>Quận 1</item>
+        <item>Quận 2</item>
+        <item>Quận 3</item>
+        <item>Quận 4</item>
+        <item>Quận 5</item>
+        <item>Quận 6</item>
+        <item>Quận 7</item>
+        <item>Quận 8</item>
+        <item>Quận 9</item>
+        <item>Quận 10</item>
+        <item>Quận 11</item>
+        <item>Quận 12</item>
+        <item>Gò Vấp</item>
+        <item>Tân Bình</item>
+        <item>Tân Phú</item>
+        <item>Bình Thạnh</item>
+        <item>Phú Nhuận</item>
+        <item>Thủ Đức</item>
+        <item>Bình Tân</item>
+        <item>Bình Chánh</item>
+        <item>Củ Chi</item>
+        <item>Hóc Môn</item>
+        <item>Nhà Bè</item>
+        <item>Cần Giờ</item>
+    </string-array>
 </resources>
