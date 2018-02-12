@@ -11,6 +11,8 @@ public class ApiConstants {
 
     public static final String SIGN_UP = BASE_URL + "user";
 
+    public static final String FEEDBACK = BASE_URL + "feedback";
+
     public static final String GET_EVENTS = BASE_URL + "";
     public static final String GET_EVENT_DETAIL = BASE_URL + "";
 }

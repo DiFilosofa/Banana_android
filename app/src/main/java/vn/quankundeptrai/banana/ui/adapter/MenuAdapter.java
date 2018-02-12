@@ -22,8 +22,6 @@ import vn.quankundeptrai.banana.ui.base.BaseViewHolder;
 
 public class MenuAdapter extends BaseRecyclerAdapter<MenuItemModel, MenuAdapter.MenuItemViewHolder> {
     private IAdapterDataCallback callback;
-    private MenuItemViewHolder currentView;
-
     public MenuAdapter(Context context, List<MenuItemModel> list, IAdapterDataCallback callback) {
         super(context, list);
         this.callback = callback;
@@ -41,33 +39,19 @@ public class MenuAdapter extends BaseRecyclerAdapter<MenuItemModel, MenuAdapter.
 
     @Override
     protected void handleItem(final MenuItemViewHolder holder, final int position, MenuItemModel item) {
-        MenuItemModel menuItem = mainList.get(position);
 
-            holder.wrapper.setBackgroundColor(Color.TRANSPARENT);
-            holder.name.setTextColor(ContextCompat.getColor(context, R.color.textBlack));
-
-
-        holder.icon.setImageResource(menuItem.getIconResId());
-        holder.name.setText(menuItem.getItemName());
+        holder.icon.setImageResource(item.getIconResId());
+        holder.name.setText(item.getItemName());
 
         holder.wrapper.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(position != AppConstants.MENU_FACEBOOK){
-                    if(currentView != null){
-                        currentView.wrapper.setBackgroundColor(Color.TRANSPARENT);
-                        currentView.name.setTextColor(ContextCompat.getColor(context, R.color.textBlack));
-                    }
-                    holder.wrapper.setBackgroundColor(ContextCompat.getColor(context, R.color.menuItemClickedPurple));
-                    holder.name.setTextColor(ContextCompat.getColor(context, R.color.colorPrimary));
-                    currentView = holder;
-                }
                 callback.onItemClick(position);
             }
         });
     }
 
-    class MenuItemViewHolder extends BaseViewHolder{
+    class MenuItemViewHolder extends BaseViewHolder {
         private ImageView icon;
         private TextView name;
         private View wrapper;

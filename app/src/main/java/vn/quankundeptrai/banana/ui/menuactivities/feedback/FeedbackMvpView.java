@@ -7,4 +7,5 @@ import vn.quankundeptrai.banana.ui.base.BaseMvpView;
  */
 
 public interface FeedbackMvpView extends BaseMvpView {
+    void onFeedbackSuccess();
 }

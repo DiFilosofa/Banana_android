@@ -10,6 +10,7 @@ import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Function;
 import vn.quankundeptrai.banana.data.exceptions.ServerResponseThrowable;
 import vn.quankundeptrai.banana.data.models.other.User;
+import vn.quankundeptrai.banana.data.models.requests.FeedbackRequest;
 import vn.quankundeptrai.banana.data.models.requests.LogInRequest;
 import vn.quankundeptrai.banana.data.models.requests.SignupRequest;
 import vn.quankundeptrai.banana.data.models.responses.BaseResponse;
@@ -71,5 +72,9 @@ public class ApiObservable {
                         return error(new ServerResponseThrowable(response));
                     }
                 });
+    }
+
+    public static Observable<BaseResponse<Object>> feedback(String feedback) {
+        return getInterface().feedback(CoreManager.getInstance().getToken(), new FeedbackRequest(feedback));
     }
 }
