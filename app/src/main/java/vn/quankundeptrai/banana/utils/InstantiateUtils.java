@@ -10,7 +10,6 @@ import vn.quankundeptrai.banana.data.models.menu.MenuItemModel;
 import vn.quankundeptrai.banana.ui.menuactivities.favoritelocations.FavoriteLocationActivity;
 import vn.quankundeptrai.banana.ui.menuactivities.feedback.FeedbackActivity;
 import vn.quankundeptrai.banana.ui.menuactivities.help.HelpActivity;
-import vn.quankundeptrai.banana.ui.main.map.MapFragment;
 import vn.quankundeptrai.banana.ui.menuactivities.notification.NotificationActivity;
 import vn.quankundeptrai.banana.ui.menuactivities.rewards.RewardsActivity;
 

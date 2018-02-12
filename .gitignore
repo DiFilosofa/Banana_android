@@ -24,3 +24,5 @@ gradlew
 gradle\.properties
 
 build/android-profile/
+
+app/app\.iml

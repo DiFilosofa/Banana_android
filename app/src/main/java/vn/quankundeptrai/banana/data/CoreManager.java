@@ -2,6 +2,7 @@ package vn.quankundeptrai.banana.data;
 
 import android.app.Activity;
 import android.content.Context;
+import android.location.Location;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -10,6 +11,7 @@ import com.google.gson.GsonBuilder;
 import vn.quankundeptrai.banana.data.constants.ExtraKeys;
 import vn.quankundeptrai.banana.data.constants.FormatConstants;
 import vn.quankundeptrai.banana.data.models.other.User;
+import vn.quankundeptrai.banana.interfaces.ILocationListener;
 import vn.quankundeptrai.banana.utils.PreferenceUtils;
 
 /**
@@ -20,6 +22,9 @@ public class CoreManager {
     private static CoreManager _instance;
     private User user;
     private String token = "";
+    private Location currentLocation;
+    private LocationManager locationManager;
+
 
     private Activity currentActivity;
     private Gson gson, commonGson;
@@ -75,5 +80,46 @@ public class CoreManager {
 
     public void logout(){
         PreferenceUtils.remove(getCurrentActivity(), ExtraKeys.USER);
+    }
+
+    public Location getCurrentLocation() {
+        return getCurrentLocation(currentActivity);
+    }
+
+    public void setCurrentLocation(Location currentLocation) {
+        this.currentLocation = currentLocation;
+        PreferenceUtils.saveFloatPref(ExtraKeys.LAT, (float) currentLocation.getLatitude());
+        PreferenceUtils.saveFloatPref(ExtraKeys.LNG, (float) currentLocation.getLongitude());
+    }
+
+    private Location getCurrentLocation(Context context) {
+        if (currentLocation == null && PreferenceUtils.isExist(context, ExtraKeys.LAT) && PreferenceUtils.isExist(context, ExtraKeys.LNG)) {
+            currentLocation = new Location("");
+            currentLocation.setLatitude(PreferenceUtils.getFloatPref(context, ExtraKeys.LAT, 0f));
+            currentLocation.setLongitude(PreferenceUtils.getFloatPref(context, ExtraKeys.LNG, 0f));
+        }
+
+        return currentLocation;
+    }
+
+    public boolean isLocationReady() {
+        return currentLocation != null;
+    }
+
+    public void addOrUpdateLocationManager(Context context, ILocationListener mListenILocationResponse) {
+        if (locationManager == null) {
+            locationManager = new LocationManager(context);
+        }
+
+        if (mListenILocationResponse != null) {
+            locationManager.setListenILocationResponse(mListenILocationResponse);
+        }
+    }
+
+    public void removeLocationManager() {
+        if (locationManager != null) {
+            locationManager.stopLocationUpdates();
+            locationManager = null;
+        }
     }
 }

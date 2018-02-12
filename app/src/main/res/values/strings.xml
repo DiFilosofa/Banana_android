@@ -29,4 +29,11 @@
     <string name="title_feedback">Feedback</string>
     <string name="title_rewards">Rewards</string>
     <string name="title_help">Help</string>
+
+    <string name="google_map_key">AIzaSyBUMeSt7xIOzssJ-PEOLbiTbMPMppCtXcU</string>
+    <string name="open_setting">Open Setting</string>
+    <string name="cancel">Cancel</string>
+    <string name="no_location_permission">We cannot get your location without your permission!</string>
+
+    <string name="please_enable_gps_and_choose_high_accuracy_method_so_strawberry_can_estimate_your_location">Please enable GPS and choose high accuracy method so Strawberry can estimate your location</string>
 </resources>

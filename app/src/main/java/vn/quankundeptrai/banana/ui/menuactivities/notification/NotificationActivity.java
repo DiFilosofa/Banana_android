@@ -26,6 +26,6 @@ public class NotificationActivity extends BaseActivity<NotificationPresenter> im
 
     @Override
     protected void initialView() {
-
+        
     }
 }

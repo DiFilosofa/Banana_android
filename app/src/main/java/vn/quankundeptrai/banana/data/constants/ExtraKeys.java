@@ -8,4 +8,8 @@ public class ExtraKeys {
     public static final String DATA = "data";
     public static final String USER = "user";
     public static final String TOKEN = "token";
+    public static final String LAT = "lat";
+    public static final String LNG = "lng";
+
+    public static final int LOCATION_REQUEST = 1;
 }
