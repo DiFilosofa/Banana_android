@@ -10,7 +10,7 @@
     <color name="hintTextGray">#999999</color>
     <color name="menuItemClickedPurple">#32a19fee</color>
     <color name="transparent_gray">#6d999999</color>
-    <color name="switch_on">#af7269e2</color>
+    <color name="switch_on">#de7269e2</color>
     <color name="switch_off">#f1f1f1</color>
     <color name="switch_track_off">#42221f1f</color>
 </resources>
