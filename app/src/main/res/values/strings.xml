@@ -1,28 +1,30 @@
 <resources>
     <string name="app_name">Banana</string>
-    <string name="error">Error</string>
-    <string name="noNetwork">Internet is not available</string>
+    <string name="error">Đã có lỗi xảy ra!</string>
+    <string name="noNetwork">Không thể kết nối với Internet!</string>
     <string name="session_timeout">Session Timeout</string>
     <string name="loading">Loading…</string>
 
     <string name="email">Email</string>
-    <string name="password">Password</string>
-    <string name="login">Login</string>
-    <string name="register">Register</string>
-    <string name="forgetPass">Forget Password?</string>
+    <string name="password">Mật khẩu</string>
+    <string name="login">Đăng nhập</string>
+    <string name="register">Đăng ký</string>
+    <string name="forgetPass">Quên Mật khẩu?</string>
     
-    <string name="registerHeader">Please fill in the form to register.</string>
+    <string name="registerHeader">Vui lòng điền thông tin để đăng ký.</string>
     <string name="registerEmail">Email*</string>
-    <string name="registerPassword">Password*</string>
-    <string name="registerConfirmPassword">Confirm Password*</string>
-    <string name="registerNickname">Nickname</string>
-    <string name="registerAddress">Address</string>
-    <string name="registerPhone">Phone</string>
+    <string name="registerPassword">Mật khẩu*</string>
+    <string name="registerConfirmPassword">Xác nhận mật khẩu*</string>
+    <string name="registerNickname">Tên hiển thị</string>
+    <string name="registerAddress">Địa chỉ</string>
+    <string name="registerPhone">Số điện thoại</string>
+
+    <string name="push_noti">Nhận thông báo từ ứng dụng</string>
 
     ///Invalid stuff
-    <string name="invalidEmail">Email is invalid.</string>
-    <string name="invalidPassword">Password is invalid.</string>
-    <string name="unmatchPasswords">Passwords don\'t match.</string>
+    <string name="invalidEmail">Email không đúng.</string>
+    <string name="invalidPassword">Mật khẩu không đúng.</string>
+    <string name="unmatchPasswords">2 mật khẩu không khớp.</string>
 
     <string name="title_notification">Notification</string>
     <string name="title_fav_location">Favorite Locations</string>
@@ -32,8 +34,8 @@
 
     <string name="google_map_key">AIzaSyBUMeSt7xIOzssJ-PEOLbiTbMPMppCtXcU</string>
     <string name="open_setting">Open Setting</string>
-    <string name="cancel">Cancel</string>
-    <string name="no_location_permission">We cannot get your location without your permission!</string>
+    <string name="cancel">Hủy</string>
+    <string name="no_location_permission">Chúng tôi không thể lấy vị trí của bạn nếu không được cho phép!</string>
 
-    <string name="please_enable_gps_and_choose_high_accuracy_method_so_strawberry_can_estimate_your_location">Please enable GPS and choose high accuracy method so Strawberry can estimate your location</string>
+    <string name="please_enable_gps_and_choose_high_accuracy_method_so_strawberry_can_estimate_your_location">Vui lòng mở GPS và chọn độ chính xác cao để ứng dụng có thể xác định vị trí của bạn</string>
 </resources>

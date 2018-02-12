@@ -10,6 +10,7 @@ public class ExtraKeys {
     public static final String TOKEN = "token";
     public static final String LAT = "lat";
     public static final String LNG = "lng";
+    public static final String NOTI_STATUS = "noti_stat";
 
     public static final int LOCATION_REQUEST = 1;
 }

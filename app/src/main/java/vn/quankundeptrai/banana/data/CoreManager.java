@@ -21,6 +21,7 @@ import vn.quankundeptrai.banana.utils.PreferenceUtils;
 public class CoreManager {
     private static CoreManager _instance;
     private User user;
+    private boolean notiOn = false;
     private String token = "";
     private Location currentLocation;
     private LocationManager locationManager;
@@ -122,4 +123,14 @@ public class CoreManager {
             locationManager = null;
         }
     }
+
+    public void setNotificationStatus(boolean on){
+        PreferenceUtils.saveBoolPref(ExtraKeys.NOTI_STATUS, on);
+    }
+
+    public boolean isNotificationOn(){
+        this.notiOn = PreferenceUtils.getBoolPref(ExtraKeys.NOTI_STATUS, false);
+        return notiOn;
+    }
+
 }
