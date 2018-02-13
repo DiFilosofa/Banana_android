@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 
 import vn.quankundeptrai.banana.R;
 import vn.quankundeptrai.banana.interfaces.IAdapterDataCallback;
+import vn.quankundeptrai.banana.ui.base.BaseActivity;
 import vn.quankundeptrai.banana.ui.main.MainActivity;
 import vn.quankundeptrai.banana.ui.adapter.MenuAdapter;
 
@@ -18,13 +19,13 @@ import vn.quankundeptrai.banana.ui.adapter.MenuAdapter;
 
 public class MenuManager implements DrawerLayout.DrawerListener, IAdapterDataCallback {
     private IAdapterDataCallback callback;
-    private MainActivity activity;
+    private BaseActivity activity;
     private MenuAdapter adapter;
     private DrawerLayout menu;
     private View mainView;
     private int currentPosition = 0;
 
-    public MenuManager(MainActivity activity, View mainView, IAdapterDataCallback callback) {
+    public MenuManager(BaseActivity activity, View mainView, IAdapterDataCallback callback) {
         this.activity = activity;
         this.adapter = new MenuAdapter(activity, InstantiateUtils.generateMenuItems(), this);
         this.mainView = mainView;

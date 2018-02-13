@@ -12,6 +12,7 @@ import vn.quankundeptrai.banana.data.constants.ExtraKeys;
 import vn.quankundeptrai.banana.data.constants.FormatConstants;
 import vn.quankundeptrai.banana.data.models.other.User;
 import vn.quankundeptrai.banana.interfaces.ILocationListener;
+import vn.quankundeptrai.banana.ui.base.BaseActivity;
 import vn.quankundeptrai.banana.utils.PreferenceUtils;
 
 /**
@@ -27,7 +28,7 @@ public class CoreManager {
     private LocationManager locationManager;
 
 
-    private Activity currentActivity;
+    private BaseActivity currentActivity;
     private Gson gson, commonGson;
 
     private CoreManager() {
@@ -46,11 +47,11 @@ public class CoreManager {
         return _instance;
     }
 
-    public Activity getCurrentActivity() {
+    public BaseActivity getCurrentActivity() {
         return currentActivity;
     }
 
-    public void setCurrentActivity(Activity currentActivity) {
+    public void setCurrentActivity(BaseActivity currentActivity) {
         this.currentActivity = currentActivity;
     }
 

@@ -42,6 +42,9 @@
     <string name="please_enable_gps_and_choose_high_accuracy_method_so_strawberry_can_estimate_your_location">Vui lòng mở GPS và chọn độ chính xác cao để ứng dụng có thể xác định vị trí của bạn</string>
     <string name="empty_feedback">Vui lòng điền vào khung góp ý!</string>
     <string name="feedback_thanks">Cám ơn những đóng góp của bạn!</string>
+    <string name="traffic_info">Các sự kiện giao thông</string>
+    <string name="leaderboard">Bảng xếp hạng</string>
+
     <string-array name="districts">
         <item>Tất cả</item>
         <item>Quận 1</item>

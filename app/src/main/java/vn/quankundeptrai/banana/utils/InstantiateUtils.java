@@ -9,6 +9,10 @@ import java.util.List;
 import vn.quankundeptrai.banana.R;
 import vn.quankundeptrai.banana.data.models.favoriteLocation.FavoriteLocationItemModel;
 import vn.quankundeptrai.banana.data.models.menu.MenuItemModel;
+import vn.quankundeptrai.banana.ui.base.BaseFragment;
+import vn.quankundeptrai.banana.ui.main.eventslist.EventListFragment;
+import vn.quankundeptrai.banana.ui.main.map.MapFragment;
+import vn.quankundeptrai.banana.ui.main.ranking.RankingFragment;
 import vn.quankundeptrai.banana.ui.menuactivities.favoritelocations.FavoriteLocationActivity;
 import vn.quankundeptrai.banana.ui.menuactivities.feedback.FeedbackActivity;
 import vn.quankundeptrai.banana.ui.menuactivities.help.HelpActivity;
@@ -38,5 +42,13 @@ public class InstantiateUtils {
             districts.add(new FavoriteLocationItemModel(dist, ""));
         }
         return districts;
+    }
+
+    public static List<BaseFragment> createNavigationFragment(){
+        List<BaseFragment> navigationItems = new ArrayList<BaseFragment>();
+        navigationItems.add(new MapFragment());
+        navigationItems.add(new EventListFragment());
+        navigationItems.add(new RankingFragment());
+        return navigationItems;
     }
 }
