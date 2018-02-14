@@ -1,5 +1,7 @@
 package vn.quankundeptrai.banana.data;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Callable;
 
 import io.reactivex.Observable;
@@ -9,6 +11,7 @@ import io.reactivex.ObservableSource;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Function;
 import vn.quankundeptrai.banana.data.exceptions.ServerResponseThrowable;
+import vn.quankundeptrai.banana.data.models.other.Event;
 import vn.quankundeptrai.banana.data.models.other.User;
 import vn.quankundeptrai.banana.data.models.requests.FeedbackRequest;
 import vn.quankundeptrai.banana.data.models.requests.LogInRequest;
@@ -41,7 +44,7 @@ public class ApiObservable {
         return Observable.fromCallable(new Callable<RxStatus>() {
             @Override
             public RxStatus call() throws Exception {
-                CoreManager.getInstance().setUser(new User(data.getToken(), data.getNickname(), email, password, data.getPhone(), data.getAddress()));
+                CoreManager.getInstance().setUser(new User(data.getUserId(), data.getToken(), data.getNickname(), email, password, data.getPhone(), data.getAddress()));
 
                 return RxStatus.Success;
             }
@@ -76,5 +79,14 @@ public class ApiObservable {
 
     public static Observable<BaseResponse<Object>> feedback(String feedback) {
         return getInterface().feedback(CoreManager.getInstance().getToken(), new FeedbackRequest(feedback));
+    }
+
+    public static Observable<BaseResponse<ArrayList<Event>>> getAllEvents() {
+        User user =  CoreManager.getInstance().getUser();
+        return getInterface().getAllEvents(user == null ? "-1" : user.getId());
+    }
+
+    public static Observable<BaseResponse<Event>> getAnEvent(String eventId){
+        return getInterface().getAnEvent(eventId);
     }
 }

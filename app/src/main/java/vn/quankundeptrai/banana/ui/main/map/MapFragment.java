@@ -24,10 +24,13 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
+
 import vn.quankundeptrai.banana.R;
 import vn.quankundeptrai.banana.data.CoreManager;
 import vn.quankundeptrai.banana.data.constants.AppConstants;
 import vn.quankundeptrai.banana.data.constants.ExtraKeys;
+import vn.quankundeptrai.banana.data.models.other.Event;
 import vn.quankundeptrai.banana.dialogs.DialogUtils;
 import vn.quankundeptrai.banana.interfaces.IAdapterDataCallback;
 import vn.quankundeptrai.banana.interfaces.IJobListener;
@@ -239,6 +242,10 @@ public class MapFragment extends BaseFragment<MapPresenter> implements MapMvpVie
 
     @Override
     public void onInfoWindowClick(Marker marker) {
+
+    }
+
+    public void updateEvent(ArrayList<Event> list){
 
     }
 }

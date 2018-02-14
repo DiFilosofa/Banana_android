@@ -27,6 +27,7 @@
     <string name="invalidEmail">Email không đúng.</string>
     <string name="invalidPassword">Mật khẩu không đúng.</string>
     <string name="unmatchPasswords">2 mật khẩu không khớp.</string>
+    <string name="noEvents">Không có sự kiện nào hiện tại.</string>
 
     <string name="title_notification">Notification</string>
     <string name="title_fav_location">Favorite Locations</string>
@@ -44,6 +45,25 @@
     <string name="feedback_thanks">Cám ơn những đóng góp của bạn!</string>
     <string name="traffic_info">Các sự kiện giao thông</string>
     <string name="leaderboard">Bảng xếp hạng</string>
+
+    <string name="posted_min_ago">%1$d phút trước</string>
+    <string name="posted_1_hour_ago">1 giờ</string>
+    <string name="posted_hour_ago">%1$d giờ trước</string>
+    <string name="yesterday">Hôm qua</string>
+    <string name="posted_day_ago">%1$d ngày trước</string>
+    <string name="point">%1$d điểm</string>
+
+    <string name="density">Lưu lượng xe</string>
+    <string name="motorbike">Xe máy</string>
+    <string name="car">Xe hơi</string>
+    <string name="rain">Mưa</string>
+    <string name="flood">Ngập lụt</string>
+    <string name="accident">Tai nạn</string>
+    <string name="warning">Khuyến cáo</string>
+    <string name="yes">Có</string>
+    <string name="no">Không</string>
+    <string name="movable">Có thể di chuyển</string>
+    <string name="unmovable">Không nên di chuyển</string>
 
     <string-array name="districts">
         <item>Tất cả</item>
@@ -71,5 +91,18 @@
         <item>Hóc Môn</item>
         <item>Nhà Bè</item>
         <item>Cần Giờ</item>
+    </string-array>
+    <string-array name="density">
+        <item>Đường thoáng</item>
+        <item>Trung bình</item>
+        <item>Khá đông xe</item>
+        <item>Đông xe</item>
+        <item>Rất đông xe</item>
+    </string-array>
+    <string-array name="vehicleSpeed">
+        <item>Di chuyển được</item>
+        <item>Di chuyển chậm</item>
+        <item>Di chuyển rất chậm</item>
+        <item>Không thể di chuyển</item>
     </string-array>
 </resources>

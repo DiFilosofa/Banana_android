@@ -5,11 +5,6 @@
     android:layout_height="match_parent"
     tools:context="vn.quankundeptrai.banana.ui.main.MainActivity">
 
-    <vn.quankundeptrai.banana.customviews.general.NonSwipeViewPager
-        android:id="@+id/pager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
     <include
         android:id="@+id/mainHeader"
         layout="@layout/layout_header" />
@@ -20,4 +15,11 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_alignParentBottom="true" />
+
+    <vn.quankundeptrai.banana.customviews.general.NonSwipeViewPager
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/navigationBar"
+        android:layout_below="@id/mainHeader" />
 </RelativeLayout>

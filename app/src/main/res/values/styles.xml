@@ -22,6 +22,14 @@
         <item name="android:textSize">18sp</item>
     </style>
 
+    <style name="PurpleTextView" parent="NormalTextView">
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="PurpleBoldTextView" parent="PurpleTextView">
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="CircleButton">
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">16sp</item>

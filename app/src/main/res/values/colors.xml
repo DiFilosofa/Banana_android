@@ -16,4 +16,9 @@
     <color name="switch_track_off">#42221f1f</color>
     <color name="checkBoxColorAccent">#e2b616</color>
     <color name="navigationItemClickedOrange">#F59090</color>
+    <color name="greenDensity">#8cdf1f</color>
+    <color name="yellowDensity">#F7E331</color>
+    <color name="orangeDensity">#DF7626</color>
+    <color name="hardOrangeDensity">#c95d1f</color>
+    <color name="redDensity">#DF1B16</color>
 </resources>

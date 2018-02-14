@@ -4,9 +4,8 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
 
     <application
         android:name="vn.quankundeptrai.banana.application.Application"
@@ -24,27 +23,44 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_map_key" />
 
-        <activity android:name="vn.quankundeptrai.banana.ui.main.MainActivity"
+        <activity
+            android:name="vn.quankundeptrai.banana.ui.main.MainActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden"/>
-        <activity android:name=".ui.account.login.LoginActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".ui.account.login.LoginActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden"/>
-        <activity android:name=".ui.account.signup.SignupActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".ui.account.signup.SignupActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden"/>
-        <activity android:name=".ui.general.SplashActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".ui.general.SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.menuactivities.favoritelocations.FavoriteLocationActivity" />
-        <activity android:name=".ui.menuactivities.help.HelpActivity" />
-        <activity android:name=".ui.menuactivities.feedback.FeedbackActivity" />
-        <activity android:name=".ui.menuactivities.notification.NotificationActivity" />
-        <activity android:name=".ui.menuactivities.rewards.RewardsActivity" />
+        <activity
+            android:name=".ui.menuactivities.favoritelocations.FavoriteLocationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.menuactivities.help.HelpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.menuactivities.feedback.FeedbackActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.menuactivities.notification.NotificationActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.menuactivities.rewards.RewardsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.eventdetail.EventDetailActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

@@ -5,6 +5,7 @@ package vn.quankundeptrai.banana.data.models.other;
  */
 
 public class User {
+    private String id;
     private String nickname;
     private String email;
     private String phone;
@@ -12,13 +13,19 @@ public class User {
     private String token;
     private String password;
 
-    public User(String token, String nickname, String email, String password, String phone, String address) {
+    public User(String id, String token, String nickname, String email, String password, String phone, String address) {
+        this.id = id;
+
         this.token = token;
         this.nickname = nickname;
         this.email = email;
         this.password = password;
         this.phone = phone;
         this.address = address;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getPassword() {

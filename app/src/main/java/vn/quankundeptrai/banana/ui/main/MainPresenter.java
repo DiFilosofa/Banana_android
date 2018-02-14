@@ -2,6 +2,8 @@ package vn.quankundeptrai.banana.ui.main;
 
 import android.location.Location;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -11,7 +13,11 @@ import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Predicate;
+import vn.quankundeptrai.banana.data.ApiObservable;
 import vn.quankundeptrai.banana.data.CoreManager;
+import vn.quankundeptrai.banana.data.models.other.Event;
+import vn.quankundeptrai.banana.data.models.responses.BaseResponse;
+import vn.quankundeptrai.banana.interfaces.ITask;
 import vn.quankundeptrai.banana.ui.base.BasePresenter;
 
 /**
@@ -19,5 +25,22 @@ import vn.quankundeptrai.banana.ui.base.BasePresenter;
  */
 
 public class MainPresenter extends BasePresenter<MainMvpView> {
+    void getAllEvents(){
+        callBaseApi(ApiObservable.getAllEvents(), new ITask<ArrayList<Event>>() {
+            @Override
+            public void onPreTask() {
 
+            }
+
+            @Override
+            public void onDone(ArrayList<Event> result) {
+                getMvpView().onGetEventsSuccess(result);
+            }
+
+            @Override
+            public void onPostTask() {
+
+            }
+        });
+    }
 }

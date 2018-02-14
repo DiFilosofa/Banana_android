@@ -13,6 +13,6 @@ public class ApiConstants {
 
     public static final String FEEDBACK = BASE_URL + "feedback";
 
-    public static final String GET_EVENTS = BASE_URL + "";
-    public static final String GET_EVENT_DETAIL = BASE_URL + "";
+    public static final String GET_EVENTS = BASE_URL + "eventsAll/{id}";
+    public static final String GET_EVENT_DETAIL = BASE_URL + "events/{eventId}";
 }

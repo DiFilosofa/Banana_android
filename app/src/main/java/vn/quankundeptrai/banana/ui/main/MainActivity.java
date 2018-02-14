@@ -1,23 +1,20 @@
 package vn.quankundeptrai.banana.ui.main;
 
-import android.content.Intent;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import java.util.ArrayList;
 
 import vn.quankundeptrai.banana.R;
 import vn.quankundeptrai.banana.customviews.general.NonSwipeViewPager;
 import vn.quankundeptrai.banana.data.constants.AppConstants;
-import vn.quankundeptrai.banana.interfaces.IAdapterDataCallback;
+import vn.quankundeptrai.banana.data.models.other.Event;
 import vn.quankundeptrai.banana.ui.adapter.MainSlidePagerAdapter;
 import vn.quankundeptrai.banana.ui.base.BaseActivity;
-import vn.quankundeptrai.banana.ui.menuactivities.favoritelocations.FavoriteLocationActivity;
-import vn.quankundeptrai.banana.ui.menuactivities.feedback.FeedbackActivity;
-import vn.quankundeptrai.banana.ui.menuactivities.help.HelpActivity;
-import vn.quankundeptrai.banana.ui.menuactivities.notification.NotificationActivity;
-import vn.quankundeptrai.banana.ui.menuactivities.rewards.RewardsActivity;
+import vn.quankundeptrai.banana.ui.main.eventslist.EventListFragment;
+import vn.quankundeptrai.banana.ui.main.map.MapFragment;
 import vn.quankundeptrai.banana.utils.InstantiateUtils;
 
 
@@ -56,15 +53,19 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainMvp
         mainView.findViewById(R.id.eventBtn).setOnClickListener(this);
         mainView.findViewById(R.id.rankBtn).setOnClickListener(this);
 
+        hideHeader(true);
+
         pager.setAdapter(mPagerAdapter = new MainSlidePagerAdapter(getSupportFragmentManager(), InstantiateUtils.createNavigationFragment()));
         pager.setOffscreenPageLimit(mPagerAdapter.getCount() - 1);
         currentItem = homeImg;
+
+        refresh();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        //Reload map
+        refresh();
     }
 
     @Override
@@ -94,7 +95,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainMvp
         header.setVisibility(hide ? View.GONE : View.VISIBLE);
     }
 
-    private void recolor(ImageView newItem){
+    private void recolor(ImageView newItem) {
         newItem.setColorFilter(ContextCompat.getColor(this, R.color.navigationItemClickedOrange));
         currentItem.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary));
         currentItem = newItem;
@@ -103,5 +104,17 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainMvp
     @Override
     protected void setTitle(String text) {
         title.setText(text);
+    }
+
+    @Override
+    public void onGetEventsSuccess(ArrayList<Event> list) {
+        hideLoading();
+        ((MapFragment) mPagerAdapter.getItem(AppConstants.NAVIGATION_HOME)).updateEvent(list);
+        ((EventListFragment) mPagerAdapter.getItem(AppConstants.NAVIGATION_EVENT)).updateEvent(list);
+    }
+
+    public void refresh() {
+        showLoading();
+        getPresenter().getAllEvents();
     }
 }
