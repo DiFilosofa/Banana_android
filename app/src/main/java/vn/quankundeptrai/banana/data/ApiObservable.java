@@ -18,8 +18,10 @@ import vn.quankundeptrai.banana.data.models.requests.LogInRequest;
 import vn.quankundeptrai.banana.data.models.requests.SignupRequest;
 import vn.quankundeptrai.banana.data.models.responses.BaseResponse;
 import vn.quankundeptrai.banana.data.models.responses.LoginResponse;
+import vn.quankundeptrai.banana.data.models.responses.UserResponse;
 import vn.quankundeptrai.banana.data.network.ApiInterfaces;
 import vn.quankundeptrai.banana.data.network.RetrofitManager;
+import vn.quankundeptrai.banana.enums.LeaderboardType;
 import vn.quankundeptrai.banana.enums.RxStatus;
 
 /**
@@ -82,11 +84,23 @@ public class ApiObservable {
     }
 
     public static Observable<BaseResponse<ArrayList<Event>>> getAllEvents() {
-        User user =  CoreManager.getInstance().getUser();
+        User user = CoreManager.getInstance().getUser();
         return getInterface().getAllEvents(user == null ? "-1" : user.getId());
     }
 
-    public static Observable<BaseResponse<Event>> getAnEvent(String eventId){
+    public static Observable<BaseResponse<Event>> getAnEvent(String eventId) {
         return getInterface().getAnEvent(eventId);
+    }
+
+    public static Observable<BaseResponse<ArrayList<UserResponse>>> getLeaderboard(long millis, LeaderboardType type) {
+        switch (type) {
+            case YEAR:
+                return getInterface().getThisYearLeaderboard(CoreManager.getInstance().getToken(), millis);
+            case MONTH:
+                return getInterface().getThisMonthLeaderboard(CoreManager.getInstance().getToken(), millis);
+            case ALL_TIME:
+                return getInterface().getAllTimeLeaderboard(CoreManager.getInstance().getToken());
+        }
+        return null;
     }
 }

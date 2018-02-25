@@ -64,7 +64,10 @@
     <string name="no">Không</string>
     <string name="movable">Có thể di chuyển</string>
     <string name="unmovable">Không nên di chuyển</string>
-
+    <string name="rankingDetail">%d điểm | %s</string>
+    <string name="allTime">All time</string>
+    <string name="year">%d</string>
+    <string name="month">Tháng %d</string>
     <string-array name="districts">
         <item>Tất cả</item>
         <item>Quận 1</item>

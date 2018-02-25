@@ -75,7 +75,6 @@ public class MapFragment extends BaseFragment<MapPresenter> implements MapMvpVie
 
         SupportMapFragment mapFragment =
                 (SupportMapFragment) this.getChildFragmentManager().findFragmentById(R.id.mapFragment);
-        mapFragment.getMapAsync(this);
 
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (ContextCompat.checkSelfPermission(getContext(),
@@ -83,8 +82,11 @@ public class MapFragment extends BaseFragment<MapPresenter> implements MapMvpVie
                 //Location Permission already granted
                 buildGoogleApiClient();
 
-                if (mMap != null)
+                if (mMap != null) {
                     mMap.setMyLocationEnabled(true);
+                }
+                mapFragment.getMapAsync(this);
+
             } else {
                 PermissionUtils.requestPermissions(getCurrentActivity(),
                         Manifest.permission.ACCESS_FINE_LOCATION,

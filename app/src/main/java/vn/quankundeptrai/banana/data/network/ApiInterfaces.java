@@ -14,6 +14,7 @@ import vn.quankundeptrai.banana.data.models.requests.LogInRequest;
 import vn.quankundeptrai.banana.data.models.requests.SignupRequest;
 import vn.quankundeptrai.banana.data.models.responses.BaseResponse;
 import vn.quankundeptrai.banana.data.models.responses.LoginResponse;
+import vn.quankundeptrai.banana.data.models.responses.UserResponse;
 
 /**
  * Created by TQN on 1/19/2018.
@@ -27,7 +28,7 @@ public interface ApiInterfaces {
     Observable<BaseResponse<Object>> register(@Body SignupRequest signupRequest);
 
     @POST(ApiConstants.FEEDBACK)
-    Observable<BaseResponse<Object>> feedback(@Header("Authorization") String token ,
+    Observable<BaseResponse<Object>> feedback(@Header("Authorization") String token,
                                               @Body FeedbackRequest feedbackRequest);
 
     @GET(ApiConstants.GET_EVENTS)
@@ -35,4 +36,15 @@ public interface ApiInterfaces {
 
     @GET(ApiConstants.GET_EVENT_DETAIL)
     Observable<BaseResponse<Event>> getAnEvent(@Path("eventId") String eventId);
+
+    @GET(ApiConstants.GET_LEADERBOARD_ALL)
+    Observable<BaseResponse<ArrayList<UserResponse>>> getAllTimeLeaderboard(@Header("Authorization") String token);
+
+    @GET(ApiConstants.GET_LEADERBOARD_YEAR)
+    Observable<BaseResponse<ArrayList<UserResponse>>> getThisYearLeaderboard(
+            @Header("Authorization") String token, @Path("yearInMillis") long year);
+
+    @GET(ApiConstants.GET_LEADERBOARD_MONTH)
+    Observable<BaseResponse<ArrayList<UserResponse>>> getThisMonthLeaderboard(
+            @Header("Authorization") String token, @Path("monthInMillis") long month);
 }

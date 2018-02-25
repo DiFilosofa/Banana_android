@@ -15,4 +15,7 @@ public class ApiConstants {
 
     public static final String GET_EVENTS = BASE_URL + "eventsAll/{id}";
     public static final String GET_EVENT_DETAIL = BASE_URL + "events/{eventId}";
+    public static final String GET_LEADERBOARD_ALL = BASE_URL + "leaderboard";
+    public static final String GET_LEADERBOARD_YEAR = BASE_URL + "leaderboard/year/{yearInMillis}";
+    public static final String GET_LEADERBOARD_MONTH = BASE_URL + "leaderboard/month/{monthInMillis}";
 }
