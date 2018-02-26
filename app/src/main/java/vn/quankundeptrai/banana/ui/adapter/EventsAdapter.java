@@ -2,7 +2,6 @@ package vn.quankundeptrai.banana.ui.adapter;
 
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -10,8 +9,10 @@ import android.widget.TextView;
 import java.util.List;
 
 import vn.quankundeptrai.banana.R;
+import vn.quankundeptrai.banana.data.CoreManager;
 import vn.quankundeptrai.banana.data.models.other.Event;
-import vn.quankundeptrai.banana.interfaces.IAdapterDataCallback;
+import vn.quankundeptrai.banana.enums.VotingState;
+import vn.quankundeptrai.banana.interfaces.IEventDataCallback;
 import vn.quankundeptrai.banana.ui.base.BaseRecyclerAdapter;
 import vn.quankundeptrai.banana.ui.base.BaseViewHolder;
 import vn.quankundeptrai.banana.utils.DateTimeUtils;
@@ -21,9 +22,14 @@ import vn.quankundeptrai.banana.utils.DateTimeUtils;
  */
 
 public class EventsAdapter extends BaseRecyclerAdapter<Event, EventsAdapter.EventViewHolder> {
-    private IAdapterDataCallback callback;
+    private IEventDataCallback callback;
 
-    public EventsAdapter(Context context, List<Event> list, IAdapterDataCallback callback) {
+    private final int green = ContextCompat.getColor(context, R.color.greenClickedButton);
+    private final int gray = ContextCompat.getColor(context, R.color.grayUnclickedButton);
+    private final int red = ContextCompat.getColor(context, R.color.darkRed);
+    private final int purple = ContextCompat.getColor(context, R.color.colorPrimary);
+
+    public EventsAdapter(Context context, List<Event> list, IEventDataCallback callback) {
         super(context, list);
         this.callback = callback;
     }
@@ -39,7 +45,7 @@ public class EventsAdapter extends BaseRecyclerAdapter<Event, EventsAdapter.Even
     }
 
     @Override
-    protected void handleItem(EventViewHolder holder, final int position, Event item) {
+    protected void handleItem(EventViewHolder holder, final int position, final Event item) {
 
         holder.rain.setVisibility(item.hasRain() ? View.VISIBLE : View.INVISIBLE);
         holder.accident.setVisibility(item.hasAccident() ? View.VISIBLE : View.INVISIBLE);
@@ -47,10 +53,10 @@ public class EventsAdapter extends BaseRecyclerAdapter<Event, EventsAdapter.Even
         holder.name.setText(item.getName());
         holder.timeAgo.setText(DateTimeUtils.getTimeAgo(context, item.getCreatedAt()));
         holder.point.setText(String.format(context.getString(R.string.point), item.getPoint().getPointSum()));
+        holder.downvoteCount.setText("" + item.getPoint().getDownvoteCount());
+        holder.upvoteCount.setText("" + item.getPoint().getUpvoteCount());
 
-        Log.e("ecec", item.getId()+item.getDensity());
-
-        switch (item.getDensity()){
+        switch (item.getDensity()) {
             case FREE:
                 holder.density.setColorFilter(ContextCompat.getColor(context, R.color.greenDensity));
                 break;
@@ -67,18 +73,41 @@ public class EventsAdapter extends BaseRecyclerAdapter<Event, EventsAdapter.Even
                 holder.density.setColorFilter(ContextCompat.getColor(context, R.color.redDensity));
                 break;
         }
+        String userId = CoreManager.getInstance().getUser().getId();
+
+        if (item.getPoint().getUpvoteList().contains(userId)) {
+            updateBtnColor(VotingState.UPVOTE, holder.upvote, holder.downvote);
+        } else if (item.getPoint().getDownvoteList().contains(userId)) {
+            updateBtnColor(VotingState.DOWNVOTE, holder.upvote, holder.downvote);
+        } else {
+            updateBtnColor(VotingState.NONE, holder.upvote, holder.downvote);
+        }
+
 
         holder.wrapper.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                callback.onItemClick(position);
+                callback.onEventClick(item.getId());
             }
         });
 
+        holder.upvote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callback.onUpvoteClick(item.getId());
+            }
+        });
+
+        holder.downvote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callback.onDownvoteClick(item.getId());
+            }
+        });
     }
 
     class EventViewHolder extends BaseViewHolder {
-        TextView name, timeAgo, point;
+        TextView name, timeAgo, point, upvoteCount, downvoteCount;
         View line, wrapper;
         ImageView upvote, downvote, accident, rain, flood, density;
 
@@ -95,6 +124,26 @@ public class EventsAdapter extends BaseRecyclerAdapter<Event, EventsAdapter.Even
             rain = itemView.findViewById(R.id.eventRain);
             flood = itemView.findViewById(R.id.eventFlood);
             density = itemView.findViewById(R.id.eventDensity);
+            upvoteCount = itemView.findViewById(R.id.upvoteCount);
+            downvoteCount = itemView.findViewById(R.id.downvoteCount);
+
+        }
+    }
+
+    public void updateBtnColor(VotingState state, ImageView upvoteBtn, ImageView downvoteBtn) {
+        switch (state) {
+            case UPVOTE:
+                upvoteBtn.setColorFilter(green);
+                downvoteBtn.setColorFilter(gray);
+                break;
+            case DOWNVOTE:
+                upvoteBtn.setColorFilter(gray);
+                downvoteBtn.setColorFilter(red);
+                break;
+            default:
+                upvoteBtn.setColorFilter(purple);
+                downvoteBtn.setColorFilter(purple);
+                break;
         }
     }
 }

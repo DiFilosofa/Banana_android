@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import vn.quankundeptrai.banana.R;
 import vn.quankundeptrai.banana.data.constants.ExtraKeys;
 import vn.quankundeptrai.banana.data.models.other.Event;
-import vn.quankundeptrai.banana.interfaces.IAdapterDataCallback;
+import vn.quankundeptrai.banana.interfaces.IEventDataCallback;
 import vn.quankundeptrai.banana.ui.adapter.EventsAdapter;
 import vn.quankundeptrai.banana.ui.base.BaseFragment;
 import vn.quankundeptrai.banana.ui.eventdetail.EventDetailActivity;
@@ -20,7 +20,7 @@ import vn.quankundeptrai.banana.ui.main.MainActivity;
  * Created by TQN on 2/13/18.
  */
 
-public class EventListFragment extends BaseFragment<EventListPresenter> implements EventListMvpView, IAdapterDataCallback, View.OnClickListener {
+public class EventListFragment extends BaseFragment<EventListPresenter> implements EventListMvpView, IEventDataCallback, View.OnClickListener {
     private EventsAdapter adapter;
     private View emptyList;
 
@@ -49,16 +49,34 @@ public class EventListFragment extends BaseFragment<EventListPresenter> implemen
     }
 
     @Override
-    public void onItemClick(int position) {
-        getCurrentActivity().startBaseActivityWithExtra(getContext(), EventDetailActivity.class, ExtraKeys.EVENT_ID, adapter.getItem(position).getId());
-    }
-
-    @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.refreshBtn:
                 ((MainActivity)getCurrentActivity()).refresh();
                 break;
         }
+    }
+
+    @Override
+    public void onUpvoteClick(String eventId) {
+        getCurrentActivity().showLoading();
+        getPresenter().upvote(eventId);
+    }
+
+    @Override
+    public void onDownvoteClick(String eventId) {
+        getCurrentActivity().showLoading();
+        getPresenter().downvote(eventId);
+    }
+
+    @Override
+    public void onEventClick(String eventId) {
+        getCurrentActivity().startBaseActivityWithExtra(getContext(), EventDetailActivity.class, ExtraKeys.EVENT_ID, eventId);
+
+    }
+
+    @Override
+    public void onVoteSuccess() {
+        ((MainActivity) getCurrentActivity()).refresh();
     }
 }

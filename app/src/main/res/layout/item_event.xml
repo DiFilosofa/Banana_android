@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/wrapper"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -35,6 +34,18 @@
         android:layout_marginTop="10dp"
         android:src="@drawable/ic_upvote" />
 
+    <TextView
+        android:id="@+id/upvoteCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/eventTimeAgo"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@id/eventUpvoteBtn"
+        android:textColor="@color/textGray"
+        android:textSize="14sp"
+        android:text="0"/>
+
     <ImageView
         android:id="@+id/eventDownvoteBtn"
         android:layout_width="30dp"
@@ -42,8 +53,20 @@
         android:layout_below="@id/eventTimeAgo"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        android:layout_toRightOf="@id/eventUpvoteBtn"
+        android:layout_toRightOf="@id/upvoteCount"
         android:src="@drawable/ic_downvote" />
+
+    <TextView
+        android:id="@+id/downvoteCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/eventTimeAgo"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@id/eventDownvoteBtn"
+        android:textColor="@color/textGray"
+        android:textSize="14sp"
+        android:text="0"/>
 
     <ImageView
         android:id="@+id/eventFlood"

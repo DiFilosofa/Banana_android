@@ -7,4 +7,5 @@ import vn.quankundeptrai.banana.ui.base.BaseMvpView;
  */
 
 public interface EventListMvpView extends BaseMvpView {
+    void onVoteSuccess();
 }

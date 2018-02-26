@@ -49,6 +49,7 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainMvp
         homeImg = mainView.findViewById(R.id.homeImg);
         listImg = mainView.findViewById(R.id.eventImg);
         rankImg = mainView.findViewById(R.id.rankImg);
+        mainView.findViewById(R.id.headerLeftBtn).setVisibility(View.GONE);
         mainView.findViewById(R.id.homeBtn).setOnClickListener(this);
         mainView.findViewById(R.id.eventBtn).setOnClickListener(this);
         mainView.findViewById(R.id.rankBtn).setOnClickListener(this);

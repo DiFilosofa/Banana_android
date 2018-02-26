@@ -42,6 +42,7 @@ public class RankingFragment extends BaseFragment<RankingPresenter> implements R
     @Override
     protected void initialView() {
         getCurrentActivity().showLoading();
+
         allTime = mainView.findViewById(R.id.allTimeBtn);
         year = mainView.findViewById(R.id.yearBtn);
         month = mainView.findViewById(R.id.monthBtn);

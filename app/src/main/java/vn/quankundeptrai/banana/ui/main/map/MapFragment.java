@@ -156,8 +156,6 @@ public class MapFragment extends BaseFragment<MapPresenter> implements MapMvpVie
         googleMap.addMarker(new MarkerOptions().position(myLatLng).title("I'm here"));
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(myLatLng));
 
-        googleMap.addMarker(new MarkerOptions().position(mMap.getCameraPosition().target).title("Near me"));
-
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {

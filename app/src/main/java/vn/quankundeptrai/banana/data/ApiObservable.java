@@ -16,6 +16,7 @@ import vn.quankundeptrai.banana.data.models.other.User;
 import vn.quankundeptrai.banana.data.models.requests.FeedbackRequest;
 import vn.quankundeptrai.banana.data.models.requests.LogInRequest;
 import vn.quankundeptrai.banana.data.models.requests.SignupRequest;
+import vn.quankundeptrai.banana.data.models.requests.VotingRequest;
 import vn.quankundeptrai.banana.data.models.responses.BaseResponse;
 import vn.quankundeptrai.banana.data.models.responses.LoginResponse;
 import vn.quankundeptrai.banana.data.models.responses.UserResponse;
@@ -102,5 +103,15 @@ public class ApiObservable {
                 return getInterface().getAllTimeLeaderboard(CoreManager.getInstance().getToken());
         }
         return null;
+    }
+
+    public static Observable<BaseResponse<Object>> upvote(String eventId) {
+        CoreManager coreManager = CoreManager.getInstance();
+        return getInterface().upvote(coreManager.getToken(), eventId, new VotingRequest(coreManager.getUser().getId()));
+    }
+
+    public static Observable<BaseResponse<Object>> downvote(String eventId) {
+        CoreManager coreManager = CoreManager.getInstance();
+        return getInterface().downvote(coreManager.getToken(), eventId, new VotingRequest(coreManager.getUser().getId()));
     }
 }

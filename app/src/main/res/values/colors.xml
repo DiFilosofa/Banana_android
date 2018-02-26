@@ -22,4 +22,8 @@
     <color name="orangeDensity">#DF7626</color>
     <color name="hardOrangeDensity">#c95d1f</color>
     <color name="redDensity">#DF1B16</color>
+    <color name="greenClickedButton">#e6a7e457</color>
+    <color name="grayUnclickedButton">#dedede</color>
+    <color name="darkRed">#e0bf312d</color>
+
 </resources>

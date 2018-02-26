@@ -24,7 +24,7 @@ public class CoreManager {
     private User user;
     private boolean notiOn = false;
     private String token = "";
-    private Location currentLocation;
+    private Location currentLocation ;
     private LocationManager locationManager;
 
 
@@ -69,8 +69,8 @@ public class CoreManager {
         return user;
     }
 
-    public String getToken(){
-        if(token.isEmpty() && isLogined(currentActivity)){
+    public String getToken() {
+        if (token.isEmpty() && isLogined(currentActivity)) {
             token = getUser().getToken();
         }
         return token;
@@ -80,7 +80,7 @@ public class CoreManager {
         return PreferenceUtils.isExist(context, ExtraKeys.USER);
     }
 
-    public void logout(){
+    public void logout() {
         PreferenceUtils.remove(getCurrentActivity(), ExtraKeys.USER);
     }
 
@@ -95,11 +95,9 @@ public class CoreManager {
     }
 
     private Location getCurrentLocation(Context context) {
-        if (currentLocation == null && PreferenceUtils.isExist(context, ExtraKeys.LAT) && PreferenceUtils.isExist(context, ExtraKeys.LNG)) {
-            currentLocation = new Location("");
-            currentLocation.setLatitude(PreferenceUtils.getFloatPref(context, ExtraKeys.LAT, 0f));
-            currentLocation.setLongitude(PreferenceUtils.getFloatPref(context, ExtraKeys.LNG, 0f));
-        }
+        currentLocation = new Location("");
+        currentLocation.setLatitude(PreferenceUtils.getFloatPref(context, ExtraKeys.LAT, 0f));
+        currentLocation.setLongitude(PreferenceUtils.getFloatPref(context, ExtraKeys.LNG, 0f));
 
         return currentLocation;
     }
@@ -125,11 +123,11 @@ public class CoreManager {
         }
     }
 
-    public void setNotificationStatus(boolean on){
+    public void setNotificationStatus(boolean on) {
         PreferenceUtils.saveBoolPref(ExtraKeys.NOTI_STATUS, on);
     }
 
-    public boolean isNotificationOn(){
+    public boolean isNotificationOn() {
         this.notiOn = PreferenceUtils.getBoolPref(ExtraKeys.NOTI_STATUS, false);
         return notiOn;
     }
