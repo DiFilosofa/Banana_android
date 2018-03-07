@@ -1,15 +1,11 @@
-package vn.quankundeptrai.banana.ui.menuactivities.notification;
+package vn.quankundeptrai.banana.ui.menu.notification;
 
 import android.support.v7.widget.SwitchCompat;
-import android.view.View;
 import android.widget.CompoundButton;
-import android.widget.Switch;
-import android.widget.Toast;
 
 import vn.quankundeptrai.banana.R;
 import vn.quankundeptrai.banana.data.CoreManager;
 import vn.quankundeptrai.banana.ui.base.BaseActivity;
-import vn.quankundeptrai.banana.ui.base.BaseFragment;
 
 /**
  * Created by TQN on 1/31/18.

@@ -1,10 +1,9 @@
-package vn.quankundeptrai.banana.ui.menuactivities.feedback;
+package vn.quankundeptrai.banana.ui.menu.feedback;
 
 import vn.quankundeptrai.banana.data.ApiObservable;
 import vn.quankundeptrai.banana.data.models.responses.BaseResponse;
 import vn.quankundeptrai.banana.interfaces.ITask;
 import vn.quankundeptrai.banana.ui.base.BasePresenter;
-import vn.quankundeptrai.banana.ui.menuactivities.help.HelpMvpView;
 
 /**
  * Created by TQN on 1/31/18.

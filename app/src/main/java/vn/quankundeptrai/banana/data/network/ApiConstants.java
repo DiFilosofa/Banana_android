@@ -13,6 +13,8 @@ public class ApiConstants {
 
     public static final String FEEDBACK = BASE_URL + "feedback";
 
+    public static final String POST_EVENT = BASE_URL + "events";
+
     public static final String GET_EVENTS = BASE_URL + "eventsAll/{id}";
     public static final String GET_EVENT_DETAIL = BASE_URL + "events/{eventId}";
     public static final String GET_LEADERBOARD_ALL = BASE_URL + "leaderboard";
@@ -20,4 +22,6 @@ public class ApiConstants {
     public static final String GET_LEADERBOARD_MONTH = BASE_URL + "leaderboard/month/{monthInMillis}";
     public static final String UPVOTE = BASE_URL+"events/upvote/{eventId}";
     public static final String DOWNVOTE = BASE_URL+"events/downvote/{eventId}";
+
+    public static final String GGMAPS_DIRECTION = "https://maps.googleapis.com/maps/api/directions/json";
 }

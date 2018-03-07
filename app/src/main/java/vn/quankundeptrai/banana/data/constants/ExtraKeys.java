@@ -12,6 +12,7 @@ public class ExtraKeys {
     public static final String LNG = "lng";
     public static final String NOTI_STATUS = "noti_stat";
     public static final String EVENT_ID = "event_id";
+    public static final String NEW_EVENT = "new_even";
 
     public static final int LOCATION_REQUEST = 1;
 }

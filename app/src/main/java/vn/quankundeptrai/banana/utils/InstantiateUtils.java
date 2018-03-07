@@ -1,7 +1,6 @@
 package vn.quankundeptrai.banana.utils;
 
 import android.content.Context;
-import android.support.v4.app.Fragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,11 +12,6 @@ import vn.quankundeptrai.banana.ui.base.BaseFragment;
 import vn.quankundeptrai.banana.ui.main.eventslist.EventListFragment;
 import vn.quankundeptrai.banana.ui.main.map.MapFragment;
 import vn.quankundeptrai.banana.ui.main.ranking.RankingFragment;
-import vn.quankundeptrai.banana.ui.menuactivities.favoritelocations.FavoriteLocationActivity;
-import vn.quankundeptrai.banana.ui.menuactivities.feedback.FeedbackActivity;
-import vn.quankundeptrai.banana.ui.menuactivities.help.HelpActivity;
-import vn.quankundeptrai.banana.ui.menuactivities.notification.NotificationActivity;
-import vn.quankundeptrai.banana.ui.menuactivities.rewards.RewardsActivity;
 
 /**
  * Created by TQN on 1/20/2018.

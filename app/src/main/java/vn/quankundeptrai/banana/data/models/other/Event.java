@@ -27,19 +27,19 @@ public class Event {
 
     @SerializedName("latitude")
     @Expose
-    private float lat;
+    private double lat;
 
     @SerializedName("longitude")
     @Expose
-    private float lng;
+    private double lng;
 
     @SerializedName("end_latitude")
     @Expose
-    private float endLat;
+    private double endLat;
 
     @SerializedName("end_longitude")
     @Expose
-    private float endLng;
+    private double endLng;
 
     @SerializedName("district")
     @Expose
@@ -97,19 +97,19 @@ public class Event {
         return density;
     }
 
-    public float getLat() {
+    public double getLat() {
         return lat;
     }
 
-    public float getLng() {
+    public double getLng() {
         return lng;
     }
 
-    public float getEndLat() {
+    public double getEndLat() {
         return endLat;
     }
 
-    public float getEndLng() {
+    public double getEndLng() {
         return endLng;
     }
 

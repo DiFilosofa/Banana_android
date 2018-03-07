@@ -1,7 +1,11 @@
 package vn.quankundeptrai.banana.data;
 
+import android.content.Context;
+import android.util.Pair;
+
+import com.google.android.gms.maps.model.LatLng;
+
 import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.Callable;
 
 import io.reactivex.Observable;
@@ -10,16 +14,20 @@ import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.ObservableSource;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Function;
+import vn.quankundeptrai.banana.R;
 import vn.quankundeptrai.banana.data.exceptions.ServerResponseThrowable;
 import vn.quankundeptrai.banana.data.models.other.Event;
 import vn.quankundeptrai.banana.data.models.other.User;
 import vn.quankundeptrai.banana.data.models.requests.FeedbackRequest;
 import vn.quankundeptrai.banana.data.models.requests.LogInRequest;
+import vn.quankundeptrai.banana.data.models.requests.PostEventRequest;
 import vn.quankundeptrai.banana.data.models.requests.SignupRequest;
 import vn.quankundeptrai.banana.data.models.requests.VotingRequest;
 import vn.quankundeptrai.banana.data.models.responses.BaseResponse;
 import vn.quankundeptrai.banana.data.models.responses.LoginResponse;
 import vn.quankundeptrai.banana.data.models.responses.UserResponse;
+import vn.quankundeptrai.banana.data.models.responses.googledirections.GoogleDirectionResponse;
+import vn.quankundeptrai.banana.data.models.responses.googledirections.GoogleLatLng;
 import vn.quankundeptrai.banana.data.network.ApiInterfaces;
 import vn.quankundeptrai.banana.data.network.RetrofitManager;
 import vn.quankundeptrai.banana.enums.LeaderboardType;
@@ -113,5 +121,43 @@ public class ApiObservable {
     public static Observable<BaseResponse<Object>> downvote(String eventId) {
         CoreManager coreManager = CoreManager.getInstance();
         return getInterface().downvote(coreManager.getToken(), eventId, new VotingRequest(coreManager.getUser().getId()));
+    }
+
+    public static Observable<GoogleDirectionResponse> getEventPolyline(Context context, Pair<LatLng, LatLng> eventLocations) {
+        return getInterface().getEventPolyline(
+                String.format("%f,%f", eventLocations.first.latitude, eventLocations.first.longitude),
+                String.format("%f,%f", eventLocations.second.latitude, eventLocations.second.longitude),
+                false, context.getResources().getString(R.string.google_map_key));
+    }
+
+    public static Observable<RxStatus> postEvent(String eventName, GoogleLatLng startLatLng, GoogleLatLng endLatLng, Float distance, int density, int carSpeed, int motorSpeed, boolean hasRain, boolean hasFlood, boolean hasAccident, boolean hasPolice, boolean shouldTravel) {
+        CoreManager coreManager = CoreManager.getInstance();
+        return getInterface().postEvent(
+                coreManager.getToken(),
+                new PostEventRequest(
+                        coreManager.getUser().getId(),
+                        eventName, startLatLng, endLatLng, distance,
+                        density, carSpeed, motorSpeed,
+                        hasRain, hasFlood, hasAccident, hasPolice, shouldTravel
+                )).flatMap(new Function<BaseResponse<Object>, ObservableSource<RxStatus>>() {
+            @Override
+            public ObservableSource<RxStatus> apply(BaseResponse<Object> response) throws Exception {
+                if (response.isSuccess()) {
+                    return Observable.fromCallable(new Callable<RxStatus>() {
+                        @Override
+                        public RxStatus call() throws Exception {
+                            return RxStatus.Success;
+                        }
+                    });
+                } else {
+                    return Observable.fromCallable(new Callable<RxStatus>() {
+                        @Override
+                        public RxStatus call() throws Exception {
+                            return RxStatus.Fail;
+                        }
+                    });
+                }
+            }
+        });
     }
 }

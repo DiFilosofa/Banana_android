@@ -1,4 +1,4 @@
-package vn.quankundeptrai.banana.ui.menuactivities.notification;
+package vn.quankundeptrai.banana.ui.menu.notification;
 
 import vn.quankundeptrai.banana.ui.base.BasePresenter;
 

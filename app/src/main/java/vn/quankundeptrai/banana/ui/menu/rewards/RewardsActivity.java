@@ -1,8 +1,7 @@
-package vn.quankundeptrai.banana.ui.menuactivities.rewards;
+package vn.quankundeptrai.banana.ui.menu.rewards;
 
 import vn.quankundeptrai.banana.R;
 import vn.quankundeptrai.banana.ui.base.BaseActivity;
-import vn.quankundeptrai.banana.ui.base.BaseFragment;
 
 /**
  * Created by TQN on 1/31/18.

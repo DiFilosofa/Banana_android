@@ -12,6 +12,7 @@
     <color name="hintTextGray">#999999</color>
     <color name="menuItemClickedPurple">#32a19fee</color>
     <color name="transparent_gray">#6d999999</color>
+    <color name="light_transparent_gray">#f1ffffff</color>
     <color name="switch_on">#de7269e2</color>
     <color name="switch_off">#f1f1f1</color>
     <color name="switch_track_off">#42221f1f</color>
@@ -25,5 +26,11 @@
     <color name="greenClickedButton">#e6a7e457</color>
     <color name="grayUnclickedButton">#dedede</color>
     <color name="darkRed">#e0bf312d</color>
+    <color name="transparent_white">#e3ffffff</color>
+    <color name="density_0">#00CF01</color>
+    <color name="density_1">#FFFF02</color>
+    <color name="density_2">#F26521</color>
+    <color name="density_3">#ED1C23</color>
+    <color name="density_4">#603913</color>
 
 </resources>

@@ -79,4 +79,17 @@
     <style name="BananaCheckbox">
         <item name="colorAccent">@color/checkBoxColorAccent</item>
     </style>
+
+    <style name="Selector">
+        <item name="android:background">@drawable/favorite_background_box</item>
+        <item name="android:layout_width">130dp</item>
+        <item name="android:layout_height">25dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/textGray</item>
+        <item name="android:paddingTop">2dp</item>
+        <item name="android:paddingBottom">2dp</item>
+        <item name="android:maxLines">1</item>
+
+    </style>
 </resources>

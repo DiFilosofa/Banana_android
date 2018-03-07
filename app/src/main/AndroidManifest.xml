@@ -44,22 +44,25 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.menuactivities.favoritelocations.FavoriteLocationActivity"
+            android:name=".ui.menu.favoritelocations.FavoriteLocationActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.menuactivities.help.HelpActivity"
+            android:name=".ui.menu.help.HelpActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.menuactivities.feedback.FeedbackActivity"
+            android:name=".ui.menu.feedback.FeedbackActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.menuactivities.notification.NotificationActivity"
+            android:name=".ui.menu.notification.NotificationActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.menuactivities.rewards.RewardsActivity"
+            android:name=".ui.menu.rewards.RewardsActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.eventdetail.EventDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.createevent.CreateNewEventActivity"
             android:screenOrientation="portrait" />
     </application>
 

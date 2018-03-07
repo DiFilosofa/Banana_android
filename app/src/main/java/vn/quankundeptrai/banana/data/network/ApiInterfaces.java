@@ -8,14 +8,17 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 import vn.quankundeptrai.banana.data.models.other.Event;
 import vn.quankundeptrai.banana.data.models.requests.FeedbackRequest;
 import vn.quankundeptrai.banana.data.models.requests.LogInRequest;
+import vn.quankundeptrai.banana.data.models.requests.PostEventRequest;
 import vn.quankundeptrai.banana.data.models.requests.SignupRequest;
 import vn.quankundeptrai.banana.data.models.requests.VotingRequest;
 import vn.quankundeptrai.banana.data.models.responses.BaseResponse;
 import vn.quankundeptrai.banana.data.models.responses.LoginResponse;
 import vn.quankundeptrai.banana.data.models.responses.UserResponse;
+import vn.quankundeptrai.banana.data.models.responses.googledirections.GoogleDirectionResponse;
 
 /**
  * Created by TQN on 1/19/2018.
@@ -68,4 +71,14 @@ public interface ApiInterfaces {
             @Header("Authorization") String token,
             @Path("eventId") String eventId,
             @Body VotingRequest votingRequest);
+
+    @GET(ApiConstants.GGMAPS_DIRECTION)
+    Observable<GoogleDirectionResponse> getEventPolyline(
+            @Query("origin") String origin, @Query("destination") String destination, @Query("sensor") boolean sensor, @Query("key") String key);
+
+    @POST(ApiConstants.POST_EVENT)
+    Observable<BaseResponse<Object>> postEvent(
+            @Header("Authorization") String token,
+            @Body PostEventRequest postEventRequest
+    );
 }

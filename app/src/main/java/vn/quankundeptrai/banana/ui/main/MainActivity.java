@@ -1,5 +1,6 @@
 package vn.quankundeptrai.banana.ui.main;
 
+import android.Manifest;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.ImageView;
@@ -10,12 +11,15 @@ import java.util.ArrayList;
 import vn.quankundeptrai.banana.R;
 import vn.quankundeptrai.banana.customviews.general.NonSwipeViewPager;
 import vn.quankundeptrai.banana.data.constants.AppConstants;
+import vn.quankundeptrai.banana.data.constants.ExtraKeys;
 import vn.quankundeptrai.banana.data.models.other.Event;
+import vn.quankundeptrai.banana.interfaces.IJobListener;
 import vn.quankundeptrai.banana.ui.adapter.MainSlidePagerAdapter;
 import vn.quankundeptrai.banana.ui.base.BaseActivity;
 import vn.quankundeptrai.banana.ui.main.eventslist.EventListFragment;
 import vn.quankundeptrai.banana.ui.main.map.MapFragment;
 import vn.quankundeptrai.banana.utils.InstantiateUtils;
+import vn.quankundeptrai.banana.utils.PermissionUtils;
 
 
 public class MainActivity extends BaseActivity<MainPresenter> implements MainMvpView, View.OnClickListener {
@@ -59,8 +63,6 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainMvp
         pager.setAdapter(mPagerAdapter = new MainSlidePagerAdapter(getSupportFragmentManager(), InstantiateUtils.createNavigationFragment()));
         pager.setOffscreenPageLimit(mPagerAdapter.getCount() - 1);
         currentItem = homeImg;
-
-        refresh();
     }
 
     @Override

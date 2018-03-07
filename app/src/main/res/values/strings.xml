@@ -58,6 +58,7 @@
     <string name="car">Xe hơi</string>
     <string name="rain">Mưa</string>
     <string name="flood">Ngập lụt</string>
+    <string name="police">CSGT</string>
     <string name="accident">Tai nạn</string>
     <string name="warning">Khuyến cáo</string>
     <string name="yes">Có</string>
@@ -68,6 +69,17 @@
     <string name="allTime">All time</string>
     <string name="year">%d</string>
     <string name="month">Tháng %d</string>
+    <string name="google_map_connect_fail">Không thể kết nối tới Google Maps, vui lòng thử lại sau!</string>
+    <string name="pick_start_point">Vui lòng chạm bản đồ để chọn điểm bắt đầu kẹt xe.</string>
+    <string name="pick_end_point">Vui lòng chạm bản đồ để chọn điểm kết thúc kẹt xe.</string>
+    <string name="please_select_start_point">Vui lòng chọn điểm bắt đầu kẹt xe</string>
+    <string name="please_select_end_point">Vui lòng chọn điểm kết thúc kẹt xe</string>
+    <string name="display_road">Đoạn đường kẹt xe sẽ được hiển thị như sau</string>
+    <string name="crowded">Đông xe</string>
+    <string name="slow_speed">Di chuyển chậm</string>
+    <string name="post_success">Cập nhật thông tin thành công. Xin cám ơn sự đóng góp của bạn!</string>
+    <string name="cancel_post">Bạn muốn ngừng chia sẻ sự kiện?</string>
+
     <string-array name="districts">
         <item>Tất cả</item>
         <item>Quận 1</item>
@@ -107,5 +119,13 @@
         <item>Di chuyển chậm</item>
         <item>Di chuyển rất chậm</item>
         <item>Không thể di chuyển</item>
+    </string-array>
+    <string-array name="yesNo">
+        <item>Không</item>
+        <item>Có</item>
+    </string-array>
+    <string-array name="recommendation">
+        <item>Nên di chuyển</item>
+        <item>Không nên di chuyển</item>
     </string-array>
 </resources>

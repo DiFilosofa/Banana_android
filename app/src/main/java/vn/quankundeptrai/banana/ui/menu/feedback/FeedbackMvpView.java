@@ -1,4 +1,4 @@
-package vn.quankundeptrai.banana.ui.menuactivities.feedback;
+package vn.quankundeptrai.banana.ui.menu.feedback;
 
 import vn.quankundeptrai.banana.ui.base.BaseMvpView;
 

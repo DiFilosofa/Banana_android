@@ -1,8 +1,7 @@
-package vn.quankundeptrai.banana.ui.menuactivities.help;
+package vn.quankundeptrai.banana.ui.menu.help;
 
 import vn.quankundeptrai.banana.R;
 import vn.quankundeptrai.banana.ui.base.BaseActivity;
-import vn.quankundeptrai.banana.ui.base.BaseFragment;
 
 /**
  * Created by TQN on 1/31/18.

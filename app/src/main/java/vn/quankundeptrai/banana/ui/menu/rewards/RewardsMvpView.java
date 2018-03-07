@@ -1,4 +1,4 @@
-package vn.quankundeptrai.banana.ui.menuactivities.rewards;
+package vn.quankundeptrai.banana.ui.menu.rewards;
 
 import vn.quankundeptrai.banana.ui.base.BaseMvpView;
 

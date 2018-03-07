@@ -1,4 +1,4 @@
-package vn.quankundeptrai.banana.ui.menuactivities.feedback;
+package vn.quankundeptrai.banana.ui.menu.feedback;
 
 import android.view.View;
 import android.widget.EditText;
@@ -6,7 +6,6 @@ import android.widget.Toast;
 
 import vn.quankundeptrai.banana.R;
 import vn.quankundeptrai.banana.ui.base.BaseActivity;
-import vn.quankundeptrai.banana.ui.menuactivities.help.HelpPresenter;
 
 /**
  * Created by TQN on 1/31/18.

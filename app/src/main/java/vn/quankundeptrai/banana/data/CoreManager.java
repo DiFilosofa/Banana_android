@@ -96,8 +96,8 @@ public class CoreManager {
 
     private Location getCurrentLocation(Context context) {
         currentLocation = new Location("");
-        currentLocation.setLatitude(PreferenceUtils.getFloatPref(context, ExtraKeys.LAT, 0f));
-        currentLocation.setLongitude(PreferenceUtils.getFloatPref(context, ExtraKeys.LNG, 0f));
+        currentLocation.setLatitude(PreferenceUtils.getFloatPref(context, ExtraKeys.LAT, 10.7734543f));
+        currentLocation.setLongitude(PreferenceUtils.getFloatPref(context, ExtraKeys.LNG, 106.6576259f));
 
         return currentLocation;
     }

@@ -1,4 +1,4 @@
-package vn.quankundeptrai.banana.ui.menuactivities.favoritelocations;
+package vn.quankundeptrai.banana.ui.menu.favoritelocations;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -7,7 +7,6 @@ import java.util.List;
 
 import vn.quankundeptrai.banana.R;
 import vn.quankundeptrai.banana.data.models.favoriteLocation.FavoriteLocationItemModel;
-import vn.quankundeptrai.banana.interfaces.IAdapterDataCallback;
 import vn.quankundeptrai.banana.interfaces.IFavoriteLocationCallback;
 import vn.quankundeptrai.banana.ui.adapter.FavoriteLocationsAdapter;
 import vn.quankundeptrai.banana.ui.base.BaseActivity;

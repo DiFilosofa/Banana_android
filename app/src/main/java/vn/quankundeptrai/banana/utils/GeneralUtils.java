@@ -1,13 +1,24 @@
 package vn.quankundeptrai.banana.utils;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.location.Location;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.os.Build;
 import android.provider.Settings;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
+import android.widget.TextView;
+
+import com.google.android.gms.maps.model.LatLng;
 
 import java.io.File;
+
+import vn.quankundeptrai.banana.R;
+import vn.quankundeptrai.banana.data.models.responses.googledirections.GoogleLatLng;
+import vn.quankundeptrai.banana.interfaces.IDialogCallback;
 
 import static android.provider.Settings.Secure.LOCATION_MODE_HIGH_ACCURACY;
 
@@ -50,5 +61,15 @@ public class GeneralUtils {
 
     private static boolean checkGPSProvider(Context context) {
         return ((LocationManager) context.getSystemService(Context.LOCATION_SERVICE)).isProviderEnabled(LocationManager.GPS_PROVIDER);
+    }
+
+    public static float getDistance(GoogleLatLng start, GoogleLatLng end) {
+        Location startLoc = new Location("");
+        Location endLoc = new Location("");
+        startLoc.setLatitude(start.getLat());
+        startLoc.setLongitude(start.getLng());
+        endLoc.setLatitude(end.getLat());
+        endLoc.setLongitude(end.getLng());
+        return startLoc.distanceTo(endLoc);
     }
 }
