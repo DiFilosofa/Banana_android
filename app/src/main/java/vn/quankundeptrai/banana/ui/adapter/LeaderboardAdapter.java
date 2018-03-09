@@ -42,7 +42,8 @@ public class LeaderboardAdapter extends BaseRecyclerAdapter<UserResponse, Leader
         holder.name.setText(item.getName());
         holder.rankingDetail.setText(String.format(context.getString(R.string.rankingDetail), item.getPoint(), item.getLevel().toString()));
         if (!item.getAvatarSrc().isEmpty()) {
-            Picasso.with(context).load(item.getAvatarSrc()).into(holder.avatar);
+            int size = (int) context.getResources().getDimension(R.dimen.avatar_size);
+            Picasso.with(context).load(item.getAvatarSrc()).resize(size, size).centerCrop().into(holder.avatar);
         }
     }
 

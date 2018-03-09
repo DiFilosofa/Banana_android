@@ -12,4 +12,5 @@ import vn.quankundeptrai.banana.ui.base.BaseMvpView;
 
 public interface MainMvpView extends BaseMvpView {
     void onGetEventsSuccess(ArrayList<Event> list);
+    void onGetProfileDone(boolean isSuccess);
 }

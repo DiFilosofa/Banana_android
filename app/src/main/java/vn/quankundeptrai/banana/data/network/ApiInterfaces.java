@@ -3,10 +3,14 @@ package vn.quankundeptrai.banana.data.network;
 import java.util.ArrayList;
 
 import io.reactivex.Observable;
+import okhttp3.MultipartBody;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import vn.quankundeptrai.banana.data.models.other.Event;
@@ -14,6 +18,7 @@ import vn.quankundeptrai.banana.data.models.requests.FeedbackRequest;
 import vn.quankundeptrai.banana.data.models.requests.LogInRequest;
 import vn.quankundeptrai.banana.data.models.requests.PostEventRequest;
 import vn.quankundeptrai.banana.data.models.requests.SignupRequest;
+import vn.quankundeptrai.banana.data.models.requests.UpdateProfileRequest;
 import vn.quankundeptrai.banana.data.models.requests.VotingRequest;
 import vn.quankundeptrai.banana.data.models.responses.BaseResponse;
 import vn.quankundeptrai.banana.data.models.responses.LoginResponse;
@@ -32,6 +37,11 @@ public interface ApiInterfaces {
     @POST(ApiConstants.SIGN_UP)
     Observable<BaseResponse<Object>> register(
             @Body SignupRequest signupRequest);
+
+    @GET(ApiConstants.PROFILE)
+    Observable<BaseResponse<UserResponse>> getProfile(
+            @Header("Authorization") String token,
+            @Path("userId") String userId);
 
     @POST(ApiConstants.FEEDBACK)
     Observable<BaseResponse<Object>> feedback(
@@ -81,4 +91,17 @@ public interface ApiInterfaces {
             @Header("Authorization") String token,
             @Body PostEventRequest postEventRequest
     );
+
+    @PUT(ApiConstants.PROFILE)
+    Observable<BaseResponse<UserResponse>> updateProfile(
+            @Header("Authorization") String token,
+            @Path("userId") String userId,
+            @Body UpdateProfileRequest updateProfileRequest
+    );
+
+    @PUT(ApiConstants.AVATAR)
+    @Multipart
+    Observable<BaseResponse<UserResponse>> uploadAvatar(@Header("Authorization") String token,
+                                                            @Path("userId") String id,
+                                                            @Part MultipartBody.Part avatar);
 }

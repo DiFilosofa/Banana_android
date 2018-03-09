@@ -5,6 +5,7 @@ import android.util.Pair;
 
 import com.google.android.gms.maps.model.LatLng;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.concurrent.Callable;
 
@@ -14,6 +15,9 @@ import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.ObservableSource;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Function;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import vn.quankundeptrai.banana.R;
 import vn.quankundeptrai.banana.data.exceptions.ServerResponseThrowable;
 import vn.quankundeptrai.banana.data.models.other.Event;
@@ -22,6 +26,7 @@ import vn.quankundeptrai.banana.data.models.requests.FeedbackRequest;
 import vn.quankundeptrai.banana.data.models.requests.LogInRequest;
 import vn.quankundeptrai.banana.data.models.requests.PostEventRequest;
 import vn.quankundeptrai.banana.data.models.requests.SignupRequest;
+import vn.quankundeptrai.banana.data.models.requests.UpdateProfileRequest;
 import vn.quankundeptrai.banana.data.models.requests.VotingRequest;
 import vn.quankundeptrai.banana.data.models.responses.BaseResponse;
 import vn.quankundeptrai.banana.data.models.responses.LoginResponse;
@@ -55,8 +60,35 @@ public class ApiObservable {
         return Observable.fromCallable(new Callable<RxStatus>() {
             @Override
             public RxStatus call() throws Exception {
-                CoreManager.getInstance().setUser(new User(data.getUserId(), data.getToken(), data.getNickname(), email, password, data.getPhone(), data.getAddress()));
+                CoreManager.getInstance().setUser(
+                        new User(
+                                data.getUserId(), data.getToken(),
+                                data.getNickname(), email, password,
+                                data.getPhone(), data.getAddress()));
+                return RxStatus.Success;
+            }
+        });
+    }
 
+    private static Observable<RxStatus> updateUserProfile(final UserResponse newUser) {
+        return Observable.fromCallable(new Callable<RxStatus>() {
+            @Override
+            public RxStatus call() throws Exception {
+                User user = CoreManager.getInstance().getUser();
+                user.update(newUser.getName(), newUser.getEmail(),
+                        newUser.getPhone(), newUser.getAddress(),
+                        newUser.getAvatarSrc(), newUser.getLevel(),
+                        newUser.getPoint());
+                return RxStatus.Success;
+            }
+        });
+    }
+
+    private static Observable<RxStatus> updateUserProfile(final String avatar) {
+        return Observable.fromCallable(new Callable<RxStatus>() {
+            @Override
+            public RxStatus call() throws Exception {
+                CoreManager.getInstance().getUser().setAvatar(avatar);
                 return RxStatus.Success;
             }
         });
@@ -73,6 +105,23 @@ public class ApiObservable {
                         return error(new ServerResponseThrowable(response));
                     }
                 });
+    }
+
+    public static Observable<RxStatus> getProfile() {
+        CoreManager coreManager = CoreManager.getInstance();
+        return getInterface().getProfile(
+                coreManager.getToken(),
+                coreManager.getUser().getId()
+        ).flatMap(new Function<BaseResponse<UserResponse>, Observable<RxStatus>>() {
+            @Override
+            public Observable<RxStatus> apply(BaseResponse<UserResponse> response) throws Exception {
+                if (response.isSuccess()) {
+                    return updateUserProfile(response.getData());
+                }
+                return error(new ServerResponseThrowable(response));
+
+            }
+        });
     }
 
     public static Observable<RxStatus> signUpAndLogin(final String email, final String password, final String confirmPassword, final String nickname, final String address, final String phone) {
@@ -157,6 +206,35 @@ public class ApiObservable {
                         }
                     });
                 }
+            }
+        });
+    }
+
+    public static Observable<RxStatus> updateProfile(String name, String phone, String address) {
+        CoreManager coreManager = CoreManager.getInstance();
+        return getInterface().updateProfile(
+                coreManager.getToken(), coreManager.getUser().getId(), new UpdateProfileRequest(name, phone, address)).flatMap(new Function<BaseResponse<UserResponse>, Observable<RxStatus>>() {
+            @Override
+            public Observable<RxStatus> apply(BaseResponse<UserResponse> response) throws Exception {
+                if (response.isSuccess()) {
+                    return updateUserProfile(response.getData());
+                }
+                return error(new ServerResponseThrowable(response));
+            }
+        });
+    }
+
+    public static Observable<RxStatus> uploadAvatar(File avatar) {
+        RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), avatar);
+        MultipartBody.Part image = MultipartBody.Part.createFormData("image", avatar.getName(), requestBody);
+
+        return getInterface().uploadAvatar(CoreManager.getInstance().getUser().getToken(), CoreManager.getInstance().getUser().getId(), image).flatMap(new Function<BaseResponse<UserResponse>, Observable<RxStatus>>() {
+            @Override
+            public Observable<RxStatus> apply(BaseResponse<UserResponse> response) throws Exception {
+                if (response.isSuccess()) {
+                    return updateUserProfile(response.getData().getAvatarSrc());
+                }
+                return error(new ServerResponseThrowable(response));
             }
         });
     }

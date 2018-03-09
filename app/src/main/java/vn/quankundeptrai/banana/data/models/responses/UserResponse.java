@@ -10,6 +10,18 @@ import vn.quankundeptrai.banana.enums.Level;
  */
 
 public class UserResponse {
+    @SerializedName("email")
+    @Expose
+    private String email;
+
+    @SerializedName("address")
+    @Expose
+    private String address;
+
+    @SerializedName("phone")
+    @Expose
+    private String phone;
+
     @SerializedName("nickname")
     @Expose
     private String name;
@@ -40,5 +52,17 @@ public class UserResponse {
 
     public String getAvatarSrc() {
         return avatarSrc;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getPhone() {
+        return phone;
     }
 }

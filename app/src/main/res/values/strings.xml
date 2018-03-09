@@ -78,7 +78,10 @@
     <string name="crowded">Đông xe</string>
     <string name="slow_speed">Di chuyển chậm</string>
     <string name="post_success">Cập nhật thông tin thành công. Xin cám ơn sự đóng góp của bạn!</string>
+    <string name="profile_update_success">Hồ sơ đã được cập nhật thành công!</string>
     <string name="cancel_post">Bạn muốn ngừng chia sẻ sự kiện?</string>
+    <string name="change">Thay đổi</string>
+    <string name="your_account">Tài khoản của bạn</string>
 
     <string-array name="districts">
         <item>Tất cả</item>

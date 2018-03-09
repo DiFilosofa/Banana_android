@@ -11,6 +11,10 @@ public class ApiConstants {
 
     public static final String SIGN_UP = BASE_URL + "user";
 
+    public static final String AVATAR = BASE_URL + "user/avatar/{userId}";
+
+    public static final String PROFILE = BASE_URL + "user/{userId}";
+
     public static final String FEEDBACK = BASE_URL + "feedback";
 
     public static final String POST_EVENT = BASE_URL + "events";

@@ -17,6 +17,7 @@ import vn.quankundeptrai.banana.data.ApiObservable;
 import vn.quankundeptrai.banana.data.CoreManager;
 import vn.quankundeptrai.banana.data.models.other.Event;
 import vn.quankundeptrai.banana.data.models.responses.BaseResponse;
+import vn.quankundeptrai.banana.enums.RxStatus;
 import vn.quankundeptrai.banana.interfaces.ITask;
 import vn.quankundeptrai.banana.ui.base.BasePresenter;
 
@@ -25,7 +26,7 @@ import vn.quankundeptrai.banana.ui.base.BasePresenter;
  */
 
 public class MainPresenter extends BasePresenter<MainMvpView> {
-    void getAllEvents(){
+    void getAllEvents() {
         callBaseApi(ApiObservable.getAllEvents(), new ITask<ArrayList<Event>>() {
             @Override
             public void onPreTask() {
@@ -35,6 +36,25 @@ public class MainPresenter extends BasePresenter<MainMvpView> {
             @Override
             public void onDone(ArrayList<Event> result) {
                 getMvpView().onGetEventsSuccess(result);
+            }
+
+            @Override
+            public void onPostTask() {
+
+            }
+        });
+    }
+
+    void getProfile() {
+        callApi(ApiObservable.getProfile(), new ITask<RxStatus>() {
+            @Override
+            public void onPreTask() {
+
+            }
+
+            @Override
+            public void onDone(RxStatus result) {
+                getMvpView().onGetProfileDone(result == RxStatus.Success);
             }
 
             @Override

@@ -8,7 +8,6 @@ import android.os.Build;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 import android.widget.ImageView;
@@ -22,12 +21,12 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -36,12 +35,14 @@ import vn.quankundeptrai.banana.data.CoreManager;
 import vn.quankundeptrai.banana.data.constants.AppConstants;
 import vn.quankundeptrai.banana.data.constants.ExtraKeys;
 import vn.quankundeptrai.banana.data.models.other.Event;
+import vn.quankundeptrai.banana.data.models.other.User;
 import vn.quankundeptrai.banana.data.models.responses.googledirections.GoogleDirectionRoutes;
 import vn.quankundeptrai.banana.dialogs.DialogUtils;
 import vn.quankundeptrai.banana.interfaces.IAdapterDataCallback;
 import vn.quankundeptrai.banana.interfaces.IJobListener;
 import vn.quankundeptrai.banana.ui.base.BaseFragment;
 import vn.quankundeptrai.banana.ui.createevent.CreateNewEventActivity;
+import vn.quankundeptrai.banana.ui.menu.editprofile.EditProfileActivity;
 import vn.quankundeptrai.banana.ui.menu.favoritelocations.FavoriteLocationActivity;
 import vn.quankundeptrai.banana.ui.menu.feedback.FeedbackActivity;
 import vn.quankundeptrai.banana.ui.menu.help.HelpActivity;
@@ -62,7 +63,8 @@ public class MapFragment extends BaseFragment<MapPresenter> implements MapMvpVie
     private boolean getCompleted = false, onActive = true;
     private ArrayList<Event> events = null;
     private View buttonPanel, dialog, densityBoard;
-    private TextView dialogText;
+    private ImageView avatar;
+    private TextView dialogText, userName, userLevel;
     private int showDialogState = 0; //0 -> no show, 1 -> picking begin point, 2 -> picking end point, 3 -> showing road
     private Marker beginMarker = null, endMarker = null;
     private Polyline tempEvent = null;
@@ -86,10 +88,15 @@ public class MapFragment extends BaseFragment<MapPresenter> implements MapMvpVie
         mainView.findViewById(R.id.currentLocationBtn).setOnClickListener(this);
         mainView.findViewById(R.id.select).setOnClickListener(this);
         mainView.findViewById(R.id.unselect).setOnClickListener(this);
+        mainView.findViewById(R.id.menuEdit).setOnClickListener(this);
+
         buttonPanel = mainView.findViewById(R.id.buttonPanel);
         dialog = mainView.findViewById(R.id.dialog);
         dialogText = mainView.findViewById(R.id.dialogText);
         densityBoard = mainView.findViewById(R.id.densityBoard);
+        avatar = mainView.findViewById(R.id.menuAvatar);
+        userName = mainView.findViewById(R.id.menuUsername);
+        userLevel = mainView.findViewById(R.id.menuLevel);
 
         ImageView menuBtn = mainView.findViewById(R.id.menuBtn);
         menuBtn.setOnClickListener(this);
@@ -194,6 +201,9 @@ public class MapFragment extends BaseFragment<MapPresenter> implements MapMvpVie
                         setDialogText();
                         break;
                 }
+                break;
+            case R.id.menuEdit:
+                startActivity(new Intent(getCurrentActivity(), EditProfileActivity.class));
                 break;
         }
     }
@@ -322,7 +332,7 @@ public class MapFragment extends BaseFragment<MapPresenter> implements MapMvpVie
     }
 
     public void updateEvent(ArrayList<Event> list) {
-        if (mMap !=null) {
+        if (mMap != null) {
             mMap.clear();
         }
         showDialog(false);
@@ -381,7 +391,9 @@ public class MapFragment extends BaseFragment<MapPresenter> implements MapMvpVie
                 endMarker.remove();
                 beginMarker.remove();
                 newEventRoute = null;
-                tempEvent.remove();
+                if (tempEvent != null) {
+                    tempEvent.remove();
+                }
             }
         }
     }
@@ -408,5 +420,16 @@ public class MapFragment extends BaseFragment<MapPresenter> implements MapMvpVie
 
     private void setDialogText() {
         dialogText.setText(getResString(showDialogState == 1 ? R.string.pick_start_point : R.string.pick_end_point));
+    }
+
+    public void updateProfileSuccess() {
+        User user = CoreManager.getInstance().getUser();
+        if (!user.getAvatar().isEmpty()) {
+            int size = (int) getResources().getDimension(R.dimen.avatar_size);
+            Picasso.with(getCurrentActivity()).load(user.getAvatar()).resize(size, size).centerCrop().into(avatar);
+        }
+        userName.setText(user.getNickname());
+        userLevel.setText(String.format(getString(R.string.rankingDetail), user.getPointSum(), user.getLevel().toString()));
+        getCurrentActivity().hideLoading();
     }
 }
