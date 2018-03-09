@@ -179,7 +179,7 @@ public class ApiObservable {
                 false, context.getResources().getString(R.string.google_map_key));
     }
 
-    public static Observable<RxStatus> postEvent(String eventName, GoogleLatLng startLatLng, GoogleLatLng endLatLng, Float distance, int density, int carSpeed, int motorSpeed, boolean hasRain, boolean hasFlood, boolean hasAccident, boolean hasPolice, boolean shouldTravel) {
+    public static Observable<RxStatus> postEvent(final File image, String eventName, GoogleLatLng startLatLng, GoogleLatLng endLatLng, Float distance, int density, int carSpeed, int motorSpeed, boolean hasRain, boolean hasFlood, boolean hasAccident, boolean hasPolice, boolean shouldTravel) {
         CoreManager coreManager = CoreManager.getInstance();
         return getInterface().postEvent(
                 coreManager.getToken(),
@@ -188,24 +188,41 @@ public class ApiObservable {
                         eventName, startLatLng, endLatLng, distance,
                         density, carSpeed, motorSpeed,
                         hasRain, hasFlood, hasAccident, hasPolice, shouldTravel
-                )).flatMap(new Function<BaseResponse<Object>, ObservableSource<RxStatus>>() {
+                )).flatMap(new Function<BaseResponse<Event>, ObservableSource<RxStatus>>() {
             @Override
-            public ObservableSource<RxStatus> apply(BaseResponse<Object> response) throws Exception {
+            public ObservableSource<RxStatus> apply(BaseResponse<Event> response) throws Exception {
                 if (response.isSuccess()) {
+                    if (image != null) {
+                        return postEventImage(image, response.getData().getId());
+                    }
                     return Observable.fromCallable(new Callable<RxStatus>() {
                         @Override
                         public RxStatus call() throws Exception {
                             return RxStatus.Success;
                         }
                     });
-                } else {
+                }
+                return error(new ServerResponseThrowable(response));
+            }
+        });
+    }
+
+    private static Observable<RxStatus> postEventImage(File image, String eventId) {
+        RequestBody requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), image);
+        MultipartBody.Part img = MultipartBody.Part.createFormData("image", image.getName(), requestBody);
+
+        return getInterface().postEventImg(CoreManager.getInstance().getUser().getToken(), eventId, img).flatMap(new Function<BaseResponse<Object>, Observable<RxStatus>>() {
+            @Override
+            public Observable<RxStatus> apply(final BaseResponse<Object> eventBaseResponse) throws Exception {
+                if (eventBaseResponse.isSuccess()) {
                     return Observable.fromCallable(new Callable<RxStatus>() {
                         @Override
                         public RxStatus call() throws Exception {
-                            return RxStatus.Fail;
+                            return RxStatus.Success;
                         }
                     });
                 }
+                return error(new ServerResponseThrowable(eventBaseResponse));
             }
         });
     }

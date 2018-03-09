@@ -87,7 +87,7 @@ public interface ApiInterfaces {
             @Query("origin") String origin, @Query("destination") String destination, @Query("sensor") boolean sensor, @Query("key") String key);
 
     @POST(ApiConstants.POST_EVENT)
-    Observable<BaseResponse<Object>> postEvent(
+    Observable<BaseResponse<Event>> postEvent(
             @Header("Authorization") String token,
             @Body PostEventRequest postEventRequest
     );
@@ -102,6 +102,12 @@ public interface ApiInterfaces {
     @PUT(ApiConstants.AVATAR)
     @Multipart
     Observable<BaseResponse<UserResponse>> uploadAvatar(@Header("Authorization") String token,
-                                                            @Path("userId") String id,
-                                                            @Part MultipartBody.Part avatar);
+                                                        @Path("userId") String id,
+                                                        @Part MultipartBody.Part avatar);
+
+    @PUT(ApiConstants.EVENTS_IMG)
+    @Multipart
+    Observable<BaseResponse<Object>> postEventImg(@Header("Authorization") String token,
+                                                 @Path("eventId") String id,
+                                                 @Part MultipartBody.Part image);
 }

@@ -4,8 +4,17 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
+import com.vansuita.pickimage.bean.PickResult;
+import com.vansuita.pickimage.bundle.PickSetup;
+import com.vansuita.pickimage.dialog.PickImageDialog;
+import com.vansuita.pickimage.listeners.IPickResult;
+
+import java.io.File;
 
 import vn.quankundeptrai.banana.R;
 import vn.quankundeptrai.banana.data.constants.ExtraKeys;
@@ -21,7 +30,7 @@ import vn.quankundeptrai.banana.utils.GeneralUtils;
  * Created by TQN on 3/6/18.
  */
 
-public class CreateNewEventActivity extends BaseActivity<CreateNewEventPresenter> implements CreateNewEventMvpView, View.OnClickListener {
+public class CreateNewEventActivity extends BaseActivity<CreateNewEventPresenter> implements CreateNewEventMvpView, View.OnClickListener, IPickResult {
     private GoogleDirectionRoutes routes;
     private Density density = Density.CROWDED;
     private VehicleSpeed carSpeed = VehicleSpeed.SLOW, bikeSpeed = VehicleSpeed.SLOW;
@@ -29,6 +38,8 @@ public class CreateNewEventActivity extends BaseActivity<CreateNewEventPresenter
     private TextView densitySelector, carSpeedSelector, bikeSpeedSelector, hasRainSelector, hasAccidentSelector, hasFloodSelector, hasPoliceSelector, recommendationSelector;
     private AlertDialog.Builder picker;
     private String[] yesNoOptions, vehiclesOptions;
+    private File image = null;
+    private ImageView eventImg;
 
     @Override
     protected int getLayoutResource() {
@@ -57,6 +68,7 @@ public class CreateNewEventActivity extends BaseActivity<CreateNewEventPresenter
                 dialog.dismiss();
             }
         });
+        eventImg = mainView.findViewById(R.id.eventImage);
         (densitySelector = mainView.findViewById(R.id.densitySelector)).setOnClickListener(this);
         (carSpeedSelector = mainView.findViewById(R.id.carSpeed)).setOnClickListener(this);
         (bikeSpeedSelector = mainView.findViewById(R.id.motorbikeSelector)).setOnClickListener(this);
@@ -66,6 +78,7 @@ public class CreateNewEventActivity extends BaseActivity<CreateNewEventPresenter
         (hasPoliceSelector = mainView.findViewById(R.id.hasPolice)).setOnClickListener(this);
         (recommendationSelector = mainView.findViewById(R.id.recommendation)).setOnClickListener(this);
 
+        mainView.findViewById(R.id.eventImageBtn).setOnClickListener(this);
         mainView.findViewById(R.id.select).setOnClickListener(this);
         mainView.findViewById(R.id.unselect).setOnClickListener(this);
 
@@ -84,6 +97,7 @@ public class CreateNewEventActivity extends BaseActivity<CreateNewEventPresenter
                 GoogleLatLng startLatLng = legs.getStartLocation();
                 GoogleLatLng endLatLng = legs.getEndLocation();
                 getPresenter().postEvent(
+                        image,
                         legs.getStartAddress(),
                         startLatLng, endLatLng,
                         GeneralUtils.getDistance(startLatLng, endLatLng),
@@ -212,6 +226,9 @@ public class CreateNewEventActivity extends BaseActivity<CreateNewEventPresenter
                 );
                 picker.show();
                 break;
+            case R.id.eventImageBtn:
+                PickImageDialog.build(new PickSetup().setWidth(300).setHeight(400)).show(this);
+                break;
         }
     }
 
@@ -223,6 +240,17 @@ public class CreateNewEventActivity extends BaseActivity<CreateNewEventPresenter
             finish();
         } else {
             Toast.makeText(this, getString(R.string.error), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onPickResult(PickResult r) {
+        if (r.getError() == null) {
+            image = new File(r.getPath());
+            Picasso.with(this).load(image).into(eventImg);
+            eventImg.setVisibility(View.VISIBLE);
+        } else {
+            Toast.makeText(this, r.getError().getMessage(), Toast.LENGTH_LONG).show();
         }
     }
 }

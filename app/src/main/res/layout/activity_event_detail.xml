@@ -1,138 +1,177 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <View
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:background="@color/colorPrimary" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/timeAgo"
-        style="@style/LoginTextView"
-        android:layout_centerHorizontal="true"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:background="@color/colorPrimary" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="30dp"
-        android:background="@drawable/favorite_background_box"
-        android:elevation="4dp"
-        android:minHeight="300dp"
-        android:paddingBottom="5dp"
-        android:orientation="vertical"
-        android:layout_below="@id/timeAgo">
+        <TextView
+            android:id="@+id/eventName"
+            style="@style/LoginTextView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="center_horizontal" />
 
-        <RelativeLayout
+        <TextView
+            android:id="@+id/timeAgo"
+            style="@style/LoginTextView"
+            android:layout_below="@id/eventName"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp" />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp">
-            <TextView
-                style="@style/PurpleTextView"
-                android:text="@string/density"
-                android:layout_alignParentLeft="true"/>
-            <TextView
-                android:id="@+id/density"
-                style="@style/NormalTextView"
-                android:layout_alignParentRight="true"/>
-        </RelativeLayout>
+            android:layout_below="@id/timeAgo"
+            android:layout_margin="30dp"
+            android:background="@drawable/favorite_background_box"
+            android:elevation="4dp"
+            android:minHeight="300dp"
+            android:orientation="vertical"
+            android:paddingBottom="5dp">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp">
-            <TextView
-                style="@style/PurpleTextView"
-                android:text="@string/motorbike"
-                android:layout_alignParentLeft="true"/>
-            <TextView
-                android:id="@+id/motorbikeSpeed"
-                style="@style/NormalTextView"
-                android:layout_alignParentRight="true"/>
-        </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="15dp">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp">
-            <TextView
-                style="@style/PurpleTextView"
-                android:text="@string/car"
-                android:layout_alignParentLeft="true"/>
-            <TextView
-                android:id="@+id/carSpeed"
-                style="@style/NormalTextView"
-                android:layout_alignParentRight="true"/>
-        </RelativeLayout>
+                <TextView
+                    style="@style/PurpleTextView"
+                    android:layout_alignParentLeft="true"
+                    android:text="@string/density" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp">
-            <TextView
-                style="@style/PurpleTextView"
-                android:text="@string/rain"
-                android:layout_alignParentLeft="true"/>
-            <TextView
-                android:id="@+id/hasRain"
-                style="@style/NormalTextView"
-                android:layout_alignParentRight="true"/>
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/density"
+                    style="@style/NormalTextView"
+                    android:layout_alignParentRight="true" />
+            </RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp">
-            <TextView
-                style="@style/PurpleTextView"
-                android:text="@string/flood"
-                android:layout_alignParentLeft="true"/>
-            <TextView
-                android:id="@+id/hasFlood"
-                style="@style/NormalTextView"
-                android:layout_alignParentRight="true"/>
-        </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp">
-            <TextView
-                style="@style/PurpleTextView"
-                android:text="@string/accident"
-                android:layout_alignParentLeft="true"/>
-            <TextView
-                android:id="@+id/hasAccident"
-                style="@style/NormalTextView"
-                android:layout_alignParentRight="true"/>
-        </RelativeLayout>
+                <TextView
+                    style="@style/PurpleTextView"
+                    android:layout_alignParentLeft="true"
+                    android:text="@string/motorbike" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp">
-            <TextView
-                style="@style/PurpleTextView"
-                android:text="@string/warning"
-                android:layout_alignParentLeft="true"/>
-            <TextView
-                android:id="@+id/recommendation"
-                style="@style/NormalTextView"
-                android:layout_alignParentRight="true"/>
-        </RelativeLayout>
-    </LinearLayout>
-</RelativeLayout>
+                <TextView
+                    android:id="@+id/motorbikeSpeed"
+                    style="@style/NormalTextView"
+                    android:layout_alignParentRight="true" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    style="@style/PurpleTextView"
+                    android:layout_alignParentLeft="true"
+                    android:text="@string/car" />
+
+                <TextView
+                    android:id="@+id/carSpeed"
+                    style="@style/NormalTextView"
+                    android:layout_alignParentRight="true" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    style="@style/PurpleTextView"
+                    android:layout_alignParentLeft="true"
+                    android:text="@string/rain" />
+
+                <TextView
+                    android:id="@+id/hasRain"
+                    style="@style/NormalTextView"
+                    android:layout_alignParentRight="true" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    style="@style/PurpleTextView"
+                    android:layout_alignParentLeft="true"
+                    android:text="@string/flood" />
+
+                <TextView
+                    android:id="@+id/hasFlood"
+                    style="@style/NormalTextView"
+                    android:layout_alignParentRight="true" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    style="@style/PurpleTextView"
+                    android:layout_alignParentLeft="true"
+                    android:text="@string/accident" />
+
+                <TextView
+                    android:id="@+id/hasAccident"
+                    style="@style/NormalTextView"
+                    android:layout_alignParentRight="true" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    style="@style/PurpleTextView"
+                    android:layout_alignParentLeft="true"
+                    android:text="@string/warning" />
+
+                <TextView
+                    android:id="@+id/recommendation"
+                    style="@style/NormalTextView"
+                    android:layout_alignParentRight="true" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/eventImage"
+                android:layout_width="@dimen/event_image_width"
+                android:layout_height="@dimen/event_image_height"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:visibility="gone" />
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>

@@ -2,7 +2,11 @@ package vn.quankundeptrai.banana.ui.eventdetail;
 
 import android.content.Intent;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import vn.quankundeptrai.banana.R;
 import vn.quankundeptrai.banana.data.constants.ExtraKeys;
@@ -15,7 +19,8 @@ import vn.quankundeptrai.banana.utils.DateTimeUtils;
  */
 
 public class EventDetailActivity extends BaseActivity<EventDetailPresenter> implements EventDetailMvpView {
-    private TextView density, motorbikeSpeed, carSpeed, hasRain, hasFlood, hasAccident, recommendation, timeAgo;
+    private TextView density, motorbikeSpeed, carSpeed, hasRain, hasFlood, hasAccident, recommendation, timeAgo, eventName;
+    private ImageView image;
 
     @Override
     protected int getLayoutResource() {
@@ -43,8 +48,8 @@ public class EventDetailActivity extends BaseActivity<EventDetailPresenter> impl
         hasAccident = mainView.findViewById(R.id.hasAccident);
         recommendation = mainView.findViewById(R.id.recommendation);
         timeAgo = mainView.findViewById(R.id.timeAgo);
-        Log.e("Eeee", getIntent().getStringExtra(ExtraKeys.EVENT_ID));
-
+        image = mainView.findViewById(R.id.eventImage);
+        eventName = mainView.findViewById(R.id.eventName);
         getPresenter().getAnEvent(getIntent().getStringExtra(ExtraKeys.EVENT_ID));
     }
 
@@ -57,8 +62,11 @@ public class EventDetailActivity extends BaseActivity<EventDetailPresenter> impl
         String moveable = getString(R.string.movable);
         String unmoveable = getString(R.string.unmovable);
 
-        hideLoading();
-        setTitle(event.getName());
+        eventName.setText(event.getName());
+        if (!event.getMedias().isEmpty()) {
+            Picasso.with(this).load(event.getMedias().get(0)).resize((int) getResources().getDimension(R.dimen.event_image_width), (int) getResources().getDimension(R.dimen.event_image_height)).centerCrop().into(image);
+            image.setVisibility(View.VISIBLE);
+        }
         timeAgo.setText(DateTimeUtils.getTimeAgo(this, event.getCreatedAt()));
         density.setText(densityType[event.getDensity().ordinal()]);
         carSpeed.setText(vehicleSpeedType[event.getCarSpeed().ordinal()]);
@@ -67,5 +75,7 @@ public class EventDetailActivity extends BaseActivity<EventDetailPresenter> impl
         hasFlood.setText(event.hasFlood() ? yes : no);
         hasAccident.setText(event.hasAccident() ? yes : no);
         recommendation.setText(event.shouldTravel() ? moveable : unmoveable);
+        hideLoading();
+
     }
 }

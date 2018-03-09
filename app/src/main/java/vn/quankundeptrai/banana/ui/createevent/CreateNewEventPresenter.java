@@ -1,6 +1,8 @@
 package vn.quankundeptrai.banana.ui.createevent;
 
 
+import java.io.File;
+
 import vn.quankundeptrai.banana.data.ApiObservable;
 import vn.quankundeptrai.banana.data.models.responses.googledirections.GoogleLatLng;
 import vn.quankundeptrai.banana.enums.RxStatus;
@@ -12,11 +14,11 @@ import vn.quankundeptrai.banana.ui.base.BasePresenter;
  */
 
 public class CreateNewEventPresenter extends BasePresenter<CreateNewEventMvpView> {
-    void postEvent(String eventName, GoogleLatLng startLatLng, GoogleLatLng endLatLng, Float distance,
+    void postEvent(File image, String eventName, GoogleLatLng startLatLng, GoogleLatLng endLatLng, Float distance,
                    int density, int carSpeed, int motorSpeed,
                    boolean hasRain, boolean hasFlood, boolean hasAccident, boolean hasPolice, boolean shouldTravel) {
 
-        callApi(ApiObservable.postEvent(eventName, startLatLng, endLatLng,
+        callApi(ApiObservable.postEvent(image, eventName, startLatLng, endLatLng,
                 distance, density, carSpeed, motorSpeed,
                 hasRain, hasFlood, hasAccident, hasPolice, shouldTravel), new ITask<RxStatus>() {
             @Override

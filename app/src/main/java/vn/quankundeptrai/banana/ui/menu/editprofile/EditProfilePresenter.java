@@ -34,7 +34,7 @@ public class EditProfilePresenter extends BasePresenter<EditProfileMvpView> {
         });
     }
 
-    void uploadAvatar(File avatar, final String path) {
+    void uploadAvatar(File avatar) {
         callApi(ApiObservable.uploadAvatar(avatar), new ITask<RxStatus>() {
             @Override
             public void onPreTask() {

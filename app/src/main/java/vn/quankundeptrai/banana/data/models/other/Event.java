@@ -3,6 +3,7 @@ package vn.quankundeptrai.banana.data.models.other;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import vn.quankundeptrai.banana.enums.Density;
@@ -84,6 +85,30 @@ public class Event {
     @SerializedName("should_travel")
     @Expose
     private boolean shouldTravel;
+
+    @SerializedName("mediaDatas")
+    @Expose
+    private ArrayList<String> medias;
+
+    public boolean isHasFlood() {
+        return hasFlood;
+    }
+
+    public boolean isHasRain() {
+        return hasRain;
+    }
+
+    public boolean isHasAccident() {
+        return hasAccident;
+    }
+
+    public boolean isShouldTravel() {
+        return shouldTravel;
+    }
+
+    public ArrayList<String> getMedias() {
+        return medias;
+    }
 
     public String getId() {
         return id;

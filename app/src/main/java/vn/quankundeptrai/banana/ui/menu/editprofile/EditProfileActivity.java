@@ -26,7 +26,7 @@ import vn.quankundeptrai.banana.ui.base.BaseActivity;
 
 public class EditProfileActivity extends BaseActivity<EditProfilePresenter> implements EditProfileMvpView, View.OnClickListener, IPickResult {
     private EditText name, phone, address;
-    private TextView email;
+    private TextView email, level;
     private CircleImageView avatar;
 
     @Override
@@ -51,6 +51,7 @@ public class EditProfileActivity extends BaseActivity<EditProfilePresenter> impl
         name = mainView.findViewById(R.id.nameInput);
         phone = mainView.findViewById(R.id.phoneInput);
         address = mainView.findViewById(R.id.addressInput);
+        level = mainView.findViewById(R.id.userLevel);
         (avatar = mainView.findViewById(R.id.userImage)).setOnClickListener(this);
         mainView.findViewById(R.id.editProfileBtn).setOnClickListener(this);
         loadProfile();
@@ -75,7 +76,7 @@ public class EditProfileActivity extends BaseActivity<EditProfilePresenter> impl
     public void onPickResult(PickResult r) {
         if (r.getError() == null) {
             showLoading();
-            getPresenter().uploadAvatar(new File(r.getPath()), r.getPath());
+            getPresenter().uploadAvatar(new File(r.getPath()));
 
         } else {
             Toast.makeText(this, r.getError().getMessage(), Toast.LENGTH_LONG).show();
@@ -93,6 +94,7 @@ public class EditProfileActivity extends BaseActivity<EditProfilePresenter> impl
         name.setText(user.getNickname());
         phone.setText(user.getPhone());
         address.setText(user.getAddress());
+        level.setText(String.format(getString(R.string.rankingDetail), user.getPointSum(), user.getLevel().toString()));
         if (user.getAvatar() != null && !user.getAvatar().isEmpty()) {
             int size = (int) getResources().getDimension(R.dimen.avatar_size);
             Picasso.with(this).load(user.getAvatar()).resize(size, size).centerCrop().into(avatar);

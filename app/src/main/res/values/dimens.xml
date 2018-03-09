@@ -6,4 +6,6 @@
     <dimen name="editTextHeight">35dp</dimen>
     <dimen name="editTextSideMargin">35dp</dimen>
     <dimen name="avatar_size">70dp</dimen>
+    <dimen name="event_image_width">150dp</dimen>
+    <dimen name="event_image_height">200dp</dimen>
 </resources>
