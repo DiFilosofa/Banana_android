@@ -1,0 +1,11 @@
+<resources>
+    <dimen name="defaultTextSize">16sp</dimen>
+    <dimen name="headerTextSize">18sp</dimen>
+
+    <dimen name="headerHeight">50dp</dimen>
+    <dimen name="editTextHeight">35dp</dimen>
+    <dimen name="editTextSideMargin">35dp</dimen>
+    <dimen name="avatar_size">70dp</dimen>
+    <dimen name="event_image_width">150dp</dimen>
+    <dimen name="event_image_height">200dp</dimen>
+</resources>

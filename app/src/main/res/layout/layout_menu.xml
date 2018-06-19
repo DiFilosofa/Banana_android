@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:background="@color/colorPrimaryLight"
+        android:orientation="vertical"
+        android:paddingLeft="10dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="80dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/menuAvatar"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_avatar_placeholder"
+                app:civ_border_color="@color/transparent_white"
+                app:civ_fill_color="@android:color/white" />
+
+            <ImageView
+                android:id="@+id/menuEdit"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/menuAvatar"
+                android:src="@drawable/ic_edit" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/menuUsername"
+            style="@style/NormalTextView"
+            android:layout_marginTop="5dp"
+            android:maxLines="1"
+            android:text="dummy dummy"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/menuLevel"
+            style="@style/NormalTextView"
+            android:layout_marginTop="5dp"
+            android:maxLines="1"
+            android:text="-1 điểm | Cấp độ: dummy"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/menuItemsRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>
