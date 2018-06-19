@@ -1,6 +1,160 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <fragment
+            android:id="@+id/mapFragment"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:id="@+id/menuBtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_menu"
+            android:tint="@color/colorPrimary" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/menuBtn"
+            android:background="@drawable/edittext_search"
+            android:drawableRight="@drawable/ic_search"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="5dp" />
+
+        <LinearLayout
+            android:id="@+id/buttonPanel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/white_circle_shadow">
+
+                <ImageView
+                    android:id="@+id/postEventBtn"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="6dp"
+                    android:src="@drawable/ic_new_event" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/white_circle_shadow">
+
+                <ImageView
+                    android:id="@+id/currentLocationBtn"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/ic_location" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/white_circle_shadow">
+
+                <ImageView
+                    android:id="@+id/layerBtn"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/ic_layers" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/densityBoard"
+            android:layout_width="120dp"
+            android:layout_height="80dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/density_board"
+            android:layout_marginLeft="5dp"/>
+
+        <RelativeLayout
+            android:id="@+id/dialog"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/pick_map_dialog"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/dialogText"
+                style="@style/NormalTextView"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="@string/pick_start_point" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="10dp">
+
+                <ImageView
+                    android:id="@+id/select"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_checked" />
+
+                <ImageView
+                    android:id="@+id/unselect"
+                    android:layout_width="0dp"
+                    android:layout_height="25dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ic_cancel" />
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="260dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start">
+
+        <include layout="@layout/layout_menu" />
+    </RelativeLayout>
+</android.support.v4.widget.DrawerLayout>

@@ -1,21 +1,30 @@
 package vn.quankundeptrai.banana.ui.main;
 
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+import java.util.ArrayList;
 
 import vn.quankundeptrai.banana.R;
 import vn.quankundeptrai.banana.customviews.general.NonSwipeViewPager;
-import vn.quankundeptrai.banana.interfaces.IAdapterDataCallback;
-import vn.quankundeptrai.banana.ui.adapter.PagerAdapter;
+import vn.quankundeptrai.banana.data.constants.AppConstants;
+import vn.quankundeptrai.banana.data.models.other.Event;
+import vn.quankundeptrai.banana.ui.adapter.MainSlidePagerAdapter;
 import vn.quankundeptrai.banana.ui.base.BaseActivity;
+import vn.quankundeptrai.banana.ui.main.eventslist.EventListFragment;
+import vn.quankundeptrai.banana.ui.main.map.MapFragment;
 import vn.quankundeptrai.banana.utils.InstantiateUtils;
-import vn.quankundeptrai.banana.utils.MenuManager;
 
-public class MainActivity extends BaseActivity<MainPresenter> implements MainMvpView, IAdapterDataCallback, View.OnClickListener {
+
+public class MainActivity extends BaseActivity<MainPresenter> implements MainMvpView, View.OnClickListener {
     private NonSwipeViewPager pager;
-    private PagerAdapter adapter;
-    private MenuManager menuManager;
+    private MainSlidePagerAdapter mPagerAdapter;
+    private View header;
+    private ImageView homeImg, listImg, rankImg;
+    private ImageView currentItem;
+    private TextView title;
 
     @Override
     protected int getLayoutResource() {
@@ -35,34 +44,86 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainMvp
     @Override
     protected void initialView() {
         pager = mainView.findViewById(R.id.pager);
+        header = mainView.findViewById(R.id.mainHeader);
+        title = mainView.findViewById(R.id.headerTitle);
+        homeImg = mainView.findViewById(R.id.homeImg);
+        listImg = mainView.findViewById(R.id.eventImg);
+        rankImg = mainView.findViewById(R.id.rankImg);
+        mainView.findViewById(R.id.headerLeftBtn).setVisibility(View.GONE);
+        mainView.findViewById(R.id.homeBtn).setOnClickListener(this);
+        mainView.findViewById(R.id.eventBtn).setOnClickListener(this);
+        mainView.findViewById(R.id.rankBtn).setOnClickListener(this);
 
-        ImageView menuBtn = (ImageView)mainView.findViewById(R.id.headerLeftBtn);
-        menuBtn.setImageResource(R.drawable.ic_menu);
-        menuBtn.setOnClickListener(this);
+        hideHeader(true);
 
-        menuManager = new MenuManager(this, mainView, this);
-
-        pager.setAdapter(adapter = new PagerAdapter(getSupportFragmentManager(), InstantiateUtils.generateMenuFragments()));
-        pager.setOffscreenPageLimit(adapter.getCount() - 1);
-    }
-
-    public void setTitle(String title){
-        ((TextView) mainView.findViewById(R.id.headerTitle)).setText(title);
+        pager.setAdapter(mPagerAdapter = new MainSlidePagerAdapter(getSupportFragmentManager(), InstantiateUtils.createNavigationFragment()));
+        pager.setOffscreenPageLimit(mPagerAdapter.getCount() - 1);
+        currentItem = homeImg;
     }
 
     @Override
-    public void onItemClick(int position) {
-        switch (position){
-            ////set menu item click behavior here
-        }
+    protected void onResume() {
+        super.onResume();
+        refresh();
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.headerLeftBtn :
-                menuManager.openMenu();
+        switch (v.getId()) {
+            case R.id.homeBtn:
+                pager.setCurrentItem(AppConstants.NAVIGATION_HOME);
+                hideHeader(true);
+                recolor(homeImg);
+                break;
+            case R.id.eventBtn:
+                pager.setCurrentItem(AppConstants.NAVIGATION_EVENT);
+                recolor(listImg);
+                title.setText(R.string.traffic_info);
+                hideHeader(false);
+                break;
+            case R.id.rankBtn:
+                pager.setCurrentItem(AppConstants.NAVIGATION_RANK);
+                recolor(rankImg);
+                title.setText(R.string.leaderboard);
+                hideHeader(false);
                 break;
         }
+    }
+
+    private void hideHeader(boolean hide) {
+        header.setVisibility(hide ? View.GONE : View.VISIBLE);
+    }
+
+    private void recolor(ImageView newItem) {
+        newItem.setColorFilter(ContextCompat.getColor(this, R.color.navigationItemClickedOrange));
+        currentItem.setColorFilter(ContextCompat.getColor(this, R.color.colorPrimary));
+        currentItem = newItem;
+    }
+
+    @Override
+    protected void setTitle(String text) {
+        title.setText(text);
+    }
+
+    @Override
+    public void onGetEventsSuccess(ArrayList<Event> list) {
+        hideLoading();
+        ((MapFragment) mPagerAdapter.getItem(AppConstants.NAVIGATION_HOME)).updateEvent(list);
+        ((EventListFragment) mPagerAdapter.getItem(AppConstants.NAVIGATION_EVENT)).updateEvent(list);
+    }
+
+    @Override
+    public void onGetProfileDone(boolean isSuccess) {
+        if (isSuccess) {
+            ((MapFragment) mPagerAdapter.getItem(AppConstants.NAVIGATION_HOME)).updateProfileSuccess();
+        } else {
+            Toast.makeText(this, getString(R.string.error), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void refresh() {
+        showLoading();
+        getPresenter().getAllEvents();
+        getPresenter().getProfile();
     }
 }

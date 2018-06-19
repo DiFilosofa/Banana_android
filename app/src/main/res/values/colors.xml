@@ -6,6 +6,31 @@
     <color name="colorAccent">#545454</color>
     <color name="loadingBlur">#83a19fee</color>
     <color name="menuHeaderColor">#cfcfcf</color>
+    <color name="shadow">#956b6a6a</color>
     <color name="textBlack">#3A3A3A</color>
+    <color name="textGray">#e1e0e0</color>
     <color name="hintTextGray">#999999</color>
+    <color name="menuItemClickedPurple">#32a19fee</color>
+    <color name="transparent_gray">#6d999999</color>
+    <color name="light_transparent_gray">#f1ffffff</color>
+    <color name="switch_on">#de7269e2</color>
+    <color name="switch_off">#f1f1f1</color>
+    <color name="switch_track_off">#42221f1f</color>
+    <color name="checkBoxColorAccent">#e2b616</color>
+    <color name="navigationItemClickedOrange">#F59090</color>
+    <color name="greenDensity">#8cdf1f</color>
+    <color name="yellowDensity">#F7E331</color>
+    <color name="orangeDensity">#DF7626</color>
+    <color name="hardOrangeDensity">#c95d1f</color>
+    <color name="redDensity">#DF1B16</color>
+    <color name="greenClickedButton">#e6a7e457</color>
+    <color name="grayUnclickedButton">#dedede</color>
+    <color name="darkRed">#e0bf312d</color>
+    <color name="transparent_white">#e3ffffff</color>
+    <color name="density_0">#00CF01</color>
+    <color name="density_1">#FFFF02</color>
+    <color name="density_2">#F26521</color>
+    <color name="density_3">#ED1C23</color>
+    <color name="density_4">#603913</color>
+
 </resources>

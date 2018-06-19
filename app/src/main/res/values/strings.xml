@@ -1,26 +1,134 @@
 <resources>
     <string name="app_name">Banana</string>
-    <string name="error">Error</string>
-    <string name="noNetwork">Internet is not available</string>
+    <string name="error">Đã có lỗi xảy ra!</string>
+    <string name="noNetwork">Không thể kết nối với Internet!</string>
     <string name="session_timeout">Session Timeout</string>
-    <string name="loading">Loading...</string>
-
+    <string name="loading">Loading…</string>
+    <string name="send">Send</string>
     <string name="email">Email</string>
-    <string name="password">Password</string>
-    <string name="login">Login</string>
-    <string name="register">Register</string>
-    <string name="forgetPass">Forget Password?</string>
+    <string name="password">Mật khẩu</string>
+    <string name="login">Đăng nhập</string>
+    <string name="register">Đăng ký</string>
+    <string name="forgetPass">Quên Mật khẩu?</string>
     
-    <string name="registerHeader">Please fill in the form to register.</string>
+    <string name="registerHeader">Vui lòng điền thông tin để đăng ký.</string>
     <string name="registerEmail">Email*</string>
-    <string name="registerPassword">Password*</string>
-    <string name="registerConfirmPassword">Confirm Password*</string>
-    <string name="registerNickname">Nickname</string>
-    <string name="registerAddress">Address</string>
-    <string name="registerPhone">Phone</string>
+    <string name="registerPassword">Mật khẩu*</string>
+    <string name="registerConfirmPassword">Xác nhận mật khẩu*</string>
+    <string name="registerNickname">Tên hiển thị</string>
+    <string name="registerAddress">Địa chỉ</string>
+    <string name="registerPhone">Số điện thoại</string>
+
+    <string name="push_noti">Nhận thông báo từ ứng dụng</string>
+    <string name="feedback_header">Hãy giúp chúng tôi cải thiện ứng dụng bằng cách gửi nhận xét của bạn!</string>
+    <string name="feedback_hint">Nhận xét…</string>
 
     ///Invalid stuff
-    <string name="invalidEmail">Email is invalid.</string>
-    <string name="invalidPassword">Password is invalid.</string>
-    <string name="unmatchPasswords">Passwords don\'t match.</string>
+    <string name="invalidEmail">Email không đúng.</string>
+    <string name="invalidPassword">Mật khẩu không đúng.</string>
+    <string name="unmatchPasswords">2 mật khẩu không khớp.</string>
+    <string name="noEvents">Không có sự kiện nào hiện tại.</string>
+
+    <string name="title_notification">Notification</string>
+    <string name="title_fav_location">Favorite Locations</string>
+    <string name="title_feedback">Feedback</string>
+    <string name="title_rewards">Rewards</string>
+    <string name="title_help">Help</string>
+
+    <string name="google_map_key">AIzaSyBUMeSt7xIOzssJ-PEOLbiTbMPMppCtXcU</string>
+    <string name="open_setting">Open Setting</string>
+    <string name="cancel">Hủy</string>
+    <string name="no_location_permission">Chúng tôi không thể lấy vị trí của bạn nếu không được cho phép!</string>
+
+    <string name="please_enable_gps_and_choose_high_accuracy_method_so_strawberry_can_estimate_your_location">Vui lòng mở GPS và chọn độ chính xác cao để ứng dụng có thể xác định vị trí của bạn</string>
+    <string name="empty_feedback">Vui lòng điền vào khung góp ý!</string>
+    <string name="feedback_thanks">Cám ơn những đóng góp của bạn!</string>
+    <string name="traffic_info">Các sự kiện giao thông</string>
+    <string name="leaderboard">Bảng xếp hạng</string>
+
+    <string name="posted_min_ago">%1$d phút trước</string>
+    <string name="posted_1_hour_ago">1 giờ</string>
+    <string name="posted_hour_ago">%1$d giờ trước</string>
+    <string name="yesterday">Hôm qua</string>
+    <string name="posted_day_ago">%1$d ngày trước</string>
+    <string name="point">%1$d điểm</string>
+
+    <string name="density">Lưu lượng xe</string>
+    <string name="motorbike">Xe máy</string>
+    <string name="car">Xe hơi</string>
+    <string name="rain">Mưa</string>
+    <string name="flood">Ngập lụt</string>
+    <string name="police">CSGT</string>
+    <string name="accident">Tai nạn</string>
+    <string name="warning">Khuyến cáo</string>
+    <string name="yes">Có</string>
+    <string name="no">Không</string>
+    <string name="movable">Có thể di chuyển</string>
+    <string name="unmovable">Không nên di chuyển</string>
+    <string name="rankingDetail">%d điểm | %s</string>
+    <string name="allTime">All time</string>
+    <string name="year">%d</string>
+    <string name="month">Tháng %d</string>
+    <string name="google_map_connect_fail">Không thể kết nối tới Google Maps, vui lòng thử lại sau!</string>
+    <string name="pick_start_point">Vui lòng chạm bản đồ để chọn điểm bắt đầu kẹt xe.</string>
+    <string name="pick_end_point">Vui lòng chạm bản đồ để chọn điểm kết thúc kẹt xe.</string>
+    <string name="please_select_start_point">Vui lòng chọn điểm bắt đầu kẹt xe</string>
+    <string name="please_select_end_point">Vui lòng chọn điểm kết thúc kẹt xe</string>
+    <string name="display_road">Đoạn đường kẹt xe sẽ được hiển thị như sau</string>
+    <string name="crowded">Đông xe</string>
+    <string name="slow_speed">Di chuyển chậm</string>
+    <string name="post_success">Cập nhật thông tin thành công. Xin cám ơn sự đóng góp của bạn!</string>
+    <string name="profile_update_success">Hồ sơ đã được cập nhật thành công!</string>
+    <string name="cancel_post">Bạn muốn ngừng chia sẻ sự kiện?</string>
+    <string name="change">Thay đổi</string>
+    <string name="your_account">Tài khoản của bạn</string>
+
+    <string-array name="districts">
+        <item>Tất cả</item>
+        <item>Quận 1</item>
+        <item>Quận 2</item>
+        <item>Quận 3</item>
+        <item>Quận 4</item>
+        <item>Quận 5</item>
+        <item>Quận 6</item>
+        <item>Quận 7</item>
+        <item>Quận 8</item>
+        <item>Quận 9</item>
+        <item>Quận 10</item>
+        <item>Quận 11</item>
+        <item>Quận 12</item>
+        <item>Gò Vấp</item>
+        <item>Tân Bình</item>
+        <item>Tân Phú</item>
+        <item>Bình Thạnh</item>
+        <item>Phú Nhuận</item>
+        <item>Thủ Đức</item>
+        <item>Bình Tân</item>
+        <item>Bình Chánh</item>
+        <item>Củ Chi</item>
+        <item>Hóc Môn</item>
+        <item>Nhà Bè</item>
+        <item>Cần Giờ</item>
+    </string-array>
+    <string-array name="density">
+        <item>Đường thoáng</item>
+        <item>Trung bình</item>
+        <item>Khá đông xe</item>
+        <item>Đông xe</item>
+        <item>Rất đông xe</item>
+    </string-array>
+    <string-array name="vehicleSpeed">
+        <item>Di chuyển được</item>
+        <item>Di chuyển chậm</item>
+        <item>Di chuyển rất chậm</item>
+        <item>Không thể di chuyển</item>
+    </string-array>
+    <string-array name="yesNo">
+        <item>Không</item>
+        <item>Có</item>
+    </string-array>
+    <string-array name="recommendation">
+        <item>Nên di chuyển</item>
+        <item>Không nên di chuyển</item>
+    </string-array>
 </resources>

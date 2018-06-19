@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/wrapper"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/eventName"
+        style="@style/PurpleBoldTextView"
+        android:layout_alignParentTop="true"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="ababababab" />
+
+    <TextView
+        android:id="@+id/eventTimeAgo"
+        style="@style/PurpleTextView"
+        android:layout_below="@id/eventName"
+        android:text="12mins ago" />
+
+    <TextView
+        android:id="@+id/eventPoints"
+        style="@style/PurpleTextView"
+        android:layout_below="@id/eventName"
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@id/eventTimeAgo" />
+
+    <ImageView
+        android:id="@+id/eventUpvoteBtn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/eventTimeAgo"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_upvote" />
+
+    <TextView
+        android:id="@+id/upvoteCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/eventTimeAgo"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@id/eventUpvoteBtn"
+        android:textColor="@color/textGray"
+        android:textSize="14sp"
+        android:text="0"/>
+
+    <ImageView
+        android:id="@+id/eventDownvoteBtn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/eventTimeAgo"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/upvoteCount"
+        android:src="@drawable/ic_downvote" />
+
+    <TextView
+        android:id="@+id/downvoteCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/eventTimeAgo"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@id/eventDownvoteBtn"
+        android:textColor="@color/textGray"
+        android:textSize="14sp"
+        android:text="0"/>
+
+    <ImageView
+        android:id="@+id/eventFlood"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/eventTimeAgo"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_flood"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/eventRain"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/eventTimeAgo"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_toLeftOf="@id/eventFlood"
+        android:src="@drawable/ic_rain"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/eventAccident"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/eventTimeAgo"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_toLeftOf="@id/eventRain"
+        android:src="@drawable/ic_accident"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/eventDensity"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/eventTimeAgo"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_toLeftOf="@id/eventAccident"
+        android:src="@drawable/ic_car" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/eventUpvoteBtn"
+        android:layout_marginTop="5dp"
+        android:background="@color/menuItemClickedPurple" />
+</RelativeLayout>

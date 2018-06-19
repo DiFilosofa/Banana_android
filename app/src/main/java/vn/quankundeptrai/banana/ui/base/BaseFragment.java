@@ -63,8 +63,8 @@ public abstract class BaseFragment <T extends BasePresenter> extends Fragment {
         }
     }
 
-    protected Activity getCurrentActivity() {
-        Activity activity = getActivity();
+    protected BaseActivity getCurrentActivity() {
+        BaseActivity activity = (BaseActivity) getActivity();
         return activity == null ? CoreManager.getInstance().getCurrentActivity() : activity;
     }
 

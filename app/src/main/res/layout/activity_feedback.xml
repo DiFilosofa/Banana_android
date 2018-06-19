@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/FavoriteLocationsTextView_district"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="@string/feedback_header"
+            android:textSize="16sp"
+            android:textStyle="normal" />
+
+        <EditText
+            android:id="@+id/feedbackInput"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="20dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textSize="16sp"
+            android:textColorHint="@color/hintTextGray"
+            android:textColor="@color/textBlack"
+            android:background="@drawable/purple_rectangle_edit_text"
+            android:hint="@string/feedback_hint"
+            android:gravity="left"/>
+
+        <TextView
+            android:id="@+id/feedbackSend"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            style="@style/CircleButton"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="40dp"
+            android:text="@string/send"/>
+    </LinearLayout>
+</ScrollView>

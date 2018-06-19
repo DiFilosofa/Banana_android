@@ -1,32 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="vn.quankundeptrai.banana.ui.main.MainActivity">
 
-    <LinearLayout
-        android:id="@+id/mainLayoutContent"
+    <include
+        android:id="@+id/mainHeader"
+        layout="@layout/layout_header" />
+
+    <include
+        android:id="@+id/navigationBar"
+        layout="@layout/layout_navigation_bar"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true" />
+
+    <vn.quankundeptrai.banana.customviews.general.NonSwipeViewPager
+        android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <include layout="@layout/layout_header" />
-
-        <vn.quankundeptrai.banana.customviews.general.NonSwipeViewPager
-            android:id="@+id/pager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="260dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="start">
-
-        <include layout="@layout/layout_menu" />
-    </RelativeLayout>
-
-</android.support.v4.widget.DrawerLayout>
+        android:layout_above="@id/navigationBar"
+        android:layout_below="@id/mainHeader" />
+</RelativeLayout>

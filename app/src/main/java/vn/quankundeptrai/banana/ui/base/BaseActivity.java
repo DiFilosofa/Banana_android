@@ -14,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.io.Serializable;
+
 import vn.quankundeptrai.banana.R;
 import vn.quankundeptrai.banana.data.CoreManager;
 import vn.quankundeptrai.banana.data.constants.ExtraKeys;
@@ -57,7 +59,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
                 }
             });
         } else {
-            hideHeader();
+            destroyHeader();
         }
 
         mainView = getLayoutInflater().inflate(getLayoutResource(), null);
@@ -86,9 +88,18 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         ((ImageView)mainView.findViewById(R.id.headerLeftBtn)).setImageResource(resourceId);
     }
 
-    private void hideHeader() {
+    public void destroyHeader(){
         ((ViewGroup) findViewById(R.id.root)).removeView(findViewById(R.id.header));
-        ((ViewGroup) findViewById(R.id.root)).removeView(findViewById(R.id.headerShadow));
+    }
+
+    public void hideHeader() {
+        findViewById(R.id.header).setVisibility(View.GONE);
+        findViewById(R.id.headerShadow).setVisibility(View.GONE);
+    }
+
+    public void showHeader(){
+        findViewById(R.id.header).setVisibility(View.VISIBLE);
+        findViewById(R.id.headerShadow).setVisibility(View.VISIBLE);
     }
 
     public T getPresenter() {
@@ -168,6 +179,33 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         if (ringProgressDialog != null && ringProgressDialog.isShowing()) {
             ringProgressDialog.dismiss();
             ringProgressDialog = null;
+        }
+    }
+
+    public void startBaseActivityWithExtra(Context context, Class<?> baseActivity, String extraName, Object extra){
+        if (extra instanceof Integer){
+            startActivity((new Intent(context, baseActivity)).putExtra(extraName, (int)extra));
+            return;
+        }
+
+        if (extra instanceof String){
+            startActivity((new Intent(context, baseActivity)).putExtra(extraName, (String)extra));
+            return;
+        }
+
+        if (extra instanceof Float){
+            startActivity((new Intent(context, baseActivity)).putExtra(extraName, (float) extra));
+            return;
+        }
+
+        if (extra instanceof Boolean){
+            startActivity((new Intent(context, baseActivity)).putExtra(extraName, (boolean) extra));
+            return;
+        }
+
+        if (extra instanceof Serializable){
+            startActivity((new Intent(context, baseActivity)).putExtra(extraName, (Serializable) extra));
+            return;
         }
     }
 }

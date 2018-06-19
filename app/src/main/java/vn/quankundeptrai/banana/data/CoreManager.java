@@ -2,6 +2,7 @@ package vn.quankundeptrai.banana.data;
 
 import android.app.Activity;
 import android.content.Context;
+import android.location.Location;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -10,6 +11,8 @@ import com.google.gson.GsonBuilder;
 import vn.quankundeptrai.banana.data.constants.ExtraKeys;
 import vn.quankundeptrai.banana.data.constants.FormatConstants;
 import vn.quankundeptrai.banana.data.models.other.User;
+import vn.quankundeptrai.banana.interfaces.ILocationListener;
+import vn.quankundeptrai.banana.ui.base.BaseActivity;
 import vn.quankundeptrai.banana.utils.PreferenceUtils;
 
 /**
@@ -19,9 +22,13 @@ import vn.quankundeptrai.banana.utils.PreferenceUtils;
 public class CoreManager {
     private static CoreManager _instance;
     private User user;
+    private boolean notiOn = false;
     private String token = "";
+    private Location currentLocation ;
+    private LocationManager locationManager;
 
-    private Activity currentActivity;
+
+    private BaseActivity currentActivity;
     private Gson gson, commonGson;
 
     private CoreManager() {
@@ -40,11 +47,11 @@ public class CoreManager {
         return _instance;
     }
 
-    public Activity getCurrentActivity() {
+    public BaseActivity getCurrentActivity() {
         return currentActivity;
     }
 
-    public void setCurrentActivity(Activity currentActivity) {
+    public void setCurrentActivity(BaseActivity currentActivity) {
         this.currentActivity = currentActivity;
     }
 
@@ -62,8 +69,8 @@ public class CoreManager {
         return user;
     }
 
-    public String getToken(){
-        if(token.isEmpty() && isLogined(currentActivity)){
+    public String getToken() {
+        if (token.isEmpty() && isLogined(currentActivity)) {
             token = getUser().getToken();
         }
         return token;
@@ -73,7 +80,56 @@ public class CoreManager {
         return PreferenceUtils.isExist(context, ExtraKeys.USER);
     }
 
-    public void logout(){
+    public void logout() {
         PreferenceUtils.remove(getCurrentActivity(), ExtraKeys.USER);
     }
+
+    public Location getCurrentLocation() {
+        return getCurrentLocation(currentActivity);
+    }
+
+    public void setCurrentLocation(Location currentLocation) {
+        this.currentLocation = currentLocation;
+        PreferenceUtils.saveFloatPref(ExtraKeys.LAT, (float) currentLocation.getLatitude());
+        PreferenceUtils.saveFloatPref(ExtraKeys.LNG, (float) currentLocation.getLongitude());
+    }
+
+    private Location getCurrentLocation(Context context) {
+        currentLocation = new Location("");
+        currentLocation.setLatitude(PreferenceUtils.getFloatPref(context, ExtraKeys.LAT, 10.7734543f));
+        currentLocation.setLongitude(PreferenceUtils.getFloatPref(context, ExtraKeys.LNG, 106.6576259f));
+
+        return currentLocation;
+    }
+
+    public boolean isLocationReady() {
+        return currentLocation != null;
+    }
+
+    public void addOrUpdateLocationManager(Context context, ILocationListener mListenILocationResponse) {
+        if (locationManager == null) {
+            locationManager = new LocationManager(context);
+        }
+
+        if (mListenILocationResponse != null) {
+            locationManager.setListenILocationResponse(mListenILocationResponse);
+        }
+    }
+
+    public void removeLocationManager() {
+        if (locationManager != null) {
+            locationManager.stopLocationUpdates();
+            locationManager = null;
+        }
+    }
+
+    public void setNotificationStatus(boolean on) {
+        PreferenceUtils.saveBoolPref(ExtraKeys.NOTI_STATUS, on);
+    }
+
+    public boolean isNotificationOn() {
+        this.notiOn = PreferenceUtils.getBoolPref(ExtraKeys.NOTI_STATUS, false);
+        return notiOn;
+    }
+
 }

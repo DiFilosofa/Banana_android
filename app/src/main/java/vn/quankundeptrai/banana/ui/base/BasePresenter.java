@@ -8,6 +8,7 @@ import io.reactivex.Observable;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import vn.quankundeptrai.banana.R;
+import vn.quankundeptrai.banana.data.models.responses.BaseResponse;
 import vn.quankundeptrai.banana.data.network.RetrofitManager;
 import vn.quankundeptrai.banana.interfaces.ITask;
 import vn.quankundeptrai.banana.utils.GeneralUtils;
@@ -49,6 +50,20 @@ public class BasePresenter <T extends BaseMvpView> implements Presenter<T> {
             compositeDisposable = new CompositeDisposable();
         }
         compositeDisposable.add(disposable);
+    }
+
+    public <E> void callBaseApi(Observable<BaseResponse<E>> observable, ITask<E> task) {
+        callBaseApi(observable, task, true);
+    }
+
+    public <E> void callBaseApi(Observable<BaseResponse<E>> observable, ITask<E> task, boolean hideKeyboard) {
+        if (!isOnline()) {
+            return;
+        }
+        if (hideKeyboard) {
+            KeyboardUtils.hideKeyboard((Activity) mContext);
+        }
+        compositeDisposable.add(RetrofitManager.getInstance().callBaseApi((BaseActivity) mContext, observable, task));
     }
 
     public <E> void callApi(Observable<E> observable, ITask<E> task) {

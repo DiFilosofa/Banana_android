@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_alignParentTop="true"
+            android:background="@color/colorPrimary" />
+
+
+        <ImageView
+            android:id="@+id/eventImageBtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:src="@drawable/ic_camera" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/eventImageBtn"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/favorite_background_box"
+            android:elevation="4dp"
+            android:minHeight="300dp"
+            android:orientation="vertical"
+            android:paddingBottom="5dp">
+
+            <TextView
+                android:id="@+id/startAddress"
+                style="@style/NormalTextView"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
+                android:ellipsize="marquee"
+                android:singleLine="true"
+                android:text="dummy dummy dummydummydummydummy dummydummy"
+                android:textColor="@color/orangeDensity"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/distance"
+                style="@style/NormalTextView"
+                android:layout_gravity="center_horizontal"
+                android:singleLine="true"
+                android:text="0.7m"
+                android:textColor="@color/orangeDensity"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/eventImage"
+                android:layout_width="150dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center_horizontal"
+                android:visibility="gone" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    style="@style/PurpleTextView"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/density" />
+
+                <TextView
+                    android:id="@+id/densitySelector"
+                    style="@style/Selector"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/crowded" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    style="@style/PurpleTextView"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/motorbike" />
+
+                <TextView
+                    android:id="@+id/motorbikeSelector"
+                    style="@style/Selector"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/slow_speed" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    style="@style/PurpleTextView"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/car" />
+
+                <TextView
+                    android:id="@+id/carSpeed"
+                    style="@style/Selector"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/slow_speed" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    style="@style/PurpleTextView"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/rain" />
+
+                <TextView
+                    android:id="@+id/hasRain"
+                    style="@style/Selector"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/no" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    style="@style/PurpleTextView"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/flood" />
+
+                <TextView
+                    android:id="@+id/hasFlood"
+                    style="@style/Selector"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/no" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    style="@style/PurpleTextView"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/accident" />
+
+                <TextView
+                    android:id="@+id/hasAccident"
+                    style="@style/Selector"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/no" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    style="@style/PurpleTextView"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/police" />
+
+                <TextView
+                    android:id="@+id/hasPolice"
+                    style="@style/Selector"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/no" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    style="@style/PurpleTextView"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/warning" />
+
+                <TextView
+                    android:id="@+id/recommendation"
+                    style="@style/Selector"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/unmovable" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/select"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_checked" />
+
+                <ImageView
+                    android:id="@+id/unselect"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="20dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_cancel" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>

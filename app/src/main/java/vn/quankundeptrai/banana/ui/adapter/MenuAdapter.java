@@ -1,6 +1,8 @@
 package vn.quankundeptrai.banana.ui.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -8,6 +10,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import vn.quankundeptrai.banana.R;
+import vn.quankundeptrai.banana.data.constants.AppConstants;
 import vn.quankundeptrai.banana.data.models.menu.MenuItemModel;
 import vn.quankundeptrai.banana.interfaces.IAdapterDataCallback;
 import vn.quankundeptrai.banana.ui.base.BaseRecyclerAdapter;
@@ -19,7 +22,6 @@ import vn.quankundeptrai.banana.ui.base.BaseViewHolder;
 
 public class MenuAdapter extends BaseRecyclerAdapter<MenuItemModel, MenuAdapter.MenuItemViewHolder> {
     private IAdapterDataCallback callback;
-
     public MenuAdapter(Context context, List<MenuItemModel> list, IAdapterDataCallback callback) {
         super(context, list);
         this.callback = callback;
@@ -36,11 +38,10 @@ public class MenuAdapter extends BaseRecyclerAdapter<MenuItemModel, MenuAdapter.
     }
 
     @Override
-    protected void handleItem(MenuItemViewHolder holder, final int position, MenuItemModel item) {
-        MenuItemModel menuItem = mainList.get(position);
+    protected void handleItem(final MenuItemViewHolder holder, final int position, MenuItemModel item) {
 
-        holder.icon.setImageResource(menuItem.getIconResId());
-        holder.name.setText(menuItem.getItemName());
+        holder.icon.setImageResource(item.getIconResId());
+        holder.name.setText(item.getItemName());
 
         holder.wrapper.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,7 +51,7 @@ public class MenuAdapter extends BaseRecyclerAdapter<MenuItemModel, MenuAdapter.
         });
     }
 
-    class MenuItemViewHolder extends BaseViewHolder{
+    class MenuItemViewHolder extends BaseViewHolder {
         private ImageView icon;
         private TextView name;
         private View wrapper;
